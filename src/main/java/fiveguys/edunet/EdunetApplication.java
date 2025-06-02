@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fiveguys.edunet.domain.Student;
-import fiveguys.edunet.repositrory.StudentRepository;
+import fiveguys.edunet.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 
 @SpringBootApplication
