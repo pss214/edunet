@@ -38,3 +38,4 @@ out/
 
 #yml
 /src/main/resources/application-db.yml
+src/.DS_Store
