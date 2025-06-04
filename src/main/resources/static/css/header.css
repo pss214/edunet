@@ -1,0 +1,12 @@
+header {
+  width: 1400px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+header > div {
+  display: flex;
+  column-gap: 20px;
+}

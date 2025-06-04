@@ -1,7 +1,18 @@
-*, ul, li, a{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style: none;
+*,
+ul,
+li,
+a {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #000;
+  list-style: none;
+}
+body {
+  background: #b286ff;
+}
+main {
+  padding-top: 80px;
+  min-height: calc(100vh - 80px);
 }

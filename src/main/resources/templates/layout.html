@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title layout:title-pattern="$CONTENT_TITLE - My Site">My Site</title>
+    <link rel="stylesheet" th:href="@{/css/default.css}" />
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+  </head>
+  <body>
+    <header>
+      <a href="#">edunet</a>
+      <div>
+        <a href="#">학교 소개</a>
+        <a href="#">교육 과정 소개</a>
+        <a href="#">관리자 페이지</a>
+      </div>
+      <a th:href="@{/login}" class="login-button">로그인</a>
+    </header>
+
+    <main layout:fragment="content"></main>
+
+    <footer><p>공통 푸터</p></footer>
+  </body>
+</html>
