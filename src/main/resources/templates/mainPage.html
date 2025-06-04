@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>메인페이지</title>
+  <link th:href="@{/css/main.css}" rel="stylesheet"/>
+  <link th:href="@{/css/default.css}" rel="stylesheet"/>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logobar">
+      <div class="nav-links">
+        <a href="#">edunet</a>
+        <a href="#">학교 소개</a>
+        <a href="#">교육 과정 소개</a>
+        <a href="#">관리자 페이지</a>
+        <a th:href="@{/login}" class="login-button">로그인</a>
+      </div>
+    </div>
+  </div>    
+  <div class="my_gradient_1">
+    <div class="hero">
+        <h1>EDUNET</h1>
+        <p>부푼 꿈을 안고 EDUNET으로!</p>
+        <div class="video-box">
+        <!-- 비디오 자리 -->
+        </div>
+    </div>
+  </div>
+  <main>
+    <div class="content-wrap">
+
+  <div class="section">
+    <h1>EDUNET 부트캠프에서는?</h1>
+    <div class="description-container">
+        <div class="description">
+            카카오에서 좋은 개발자를 양성하고, 지속 가능한 개발 생태계를 만들기 위해 카카오의 부트캠프를 새롭게 시작합니다.<br/>
+            다양한 성장, 실전 프로젝트 기반 교육, 함께하는 피어 학습, 무한한 성장 가능성을 만나보세요.
+        </div>
+    </div>
+    <div class="card-container">
+      <div class="card">다양하고 무한한 성장</div>
+      <div class="card">함께하는 디모 성장</div>
+      <div class="card">엄청난 무한성장</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>부트캠프 둘러보기</h2>
+    <h3>프론트엔드</h3>
+      <div class="course-grid">
+        <div class="course-card">Next.js 프론트엔드 교육 과정</div>
+        <div class="course-card">Next.js 프론트엔드 교육 과정</div>
+        <div class="course-card">Next.js 프론트엔드 교육 과정</div>
+      </div>
+      <h3>백엔드</h3>
+      <div class="course-grid">
+        <div class="course-card">Next.js 백엔드 교육 과정</div>
+        <div class="course-card">Next.js 백엔드 교육 과정</div>
+        <div class="course-card">Next.js 백엔드 교육 과정</div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

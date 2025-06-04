@@ -9,7 +9,7 @@ spring:
             max-request-size: 50MB
     thymeleaf:
         enabled: true
-        prefix=classpath: templates/
+        prefix: classpath:/templates/
         cache: false
     devtools: 
         livereload:
