@@ -14,16 +14,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Getter
-public class Student extends BaseTime{
-    
+
+public class Student extends BaseTime {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String username;
     private String password;
     private String studentname;
     private String email;
     private String phonenumber;
-        
+
 }
