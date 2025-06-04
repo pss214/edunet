@@ -7,4 +7,14 @@ spring:
         multipart:
             max-file-size: 50MB
             max-request-size: 50MB
-    
+    thymeleaf:
+        enabled: true
+        prefix=classpath: templates/
+        cache: false
+    devtools: 
+        livereload:
+            enabled: true
+            port: 35729
+    freemarker:
+        cache: false
+        
