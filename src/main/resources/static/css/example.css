@@ -1,0 +1,151 @@
+/* 스위치 학생, 교사 css */
+.wrapper {
+  height: 50px;
+  position: absolute;
+  display: flex;
+  top: 1%;
+  left: 1%;
+  column-gap: 12px;
+}
+#switch {
+  position: absolute;
+  /* hidden */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.switch_label {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  width: 58px;
+  height: 28px;
+  background: #fff;
+  border: 2px solid #B286FF;
+  border-radius: 20px;
+  transition: 0.2s;
+}
+.switch_label:hover {
+  background: #efefef;
+}
+.onf_btn {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background: #B286FF;
+  transition: 0.2s;
+}
+
+/* checking style */
+#switch:checked+.switch_label {
+  background: #B286FF;
+  border: 2px solid #B286FF;
+}
+
+#switch:checked+.switch_label:hover {
+  background: #B286FF;
+}
+
+/* move */
+#switch:checked+.switch_label .onf_btn {
+  left: 34px;
+  background: #fff;
+  box-shadow: 1px 2px 3px #00000020;
+}
+
+
+/* 스위치 학생, 교사 css */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+body, html {
+  height: 100%;
+  background-color: white;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.left-panel {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 40px;
+  position: relative;
+  border-right: 1px solid #b9d7ff;
+}
+
+.label {
+  font-size: 14px;
+  color: #666;
+}
+
+.login-box {
+  margin-top: 37%;
+  text-align: center;
+}
+
+.login-box h2 {
+  font-size: 36px;
+  color: #b58cf2;
+  margin-bottom: 40px;
+}
+
+.login-box input {
+  display: block;
+  width: 300px;
+  padding: 15px;
+  margin: 10px auto;
+  border: none;
+  border-radius: 10px;
+  background-color: #f4f4f4;
+  font-size: 16px;
+}
+
+.links {
+  margin-top: 20px;
+  color: #888;
+  font-size: 14px;
+}
+
+.links a {
+  text-decoration: none;
+  color: #888;
+  margin: 0 5px;
+}
+
+.right-panel {
+  flex: 1;
+  background-color: #b58cf2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-panel img {
+  max-width: 80%;
+  height: auto;
+}
+
+.login_btn{
+  display: block;
+  width: 300px;
+  padding: 15px;
+  margin: 10px auto;
+  border: none;
+  border-radius: 10px;
+  background-color: #B286FF;
+  color: #ffffff;
+  font-size: 16px;
+}

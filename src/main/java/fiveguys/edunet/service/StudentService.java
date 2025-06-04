@@ -18,7 +18,6 @@ import lombok.RequiredArgsConstructor;
 public class StudentService {
 
     private final StudentRepository studentRepository;
-    private final PasswordEncoder passwordEncoder; // BCryptPasswordEncoder Bean 주입
 
     /**
      * 회원 가입
@@ -38,7 +37,7 @@ public class StudentService {
         // 3) 엔티티 생성 & 저장
         Student student = Student.builder()
                 .username(form.getUsername())
-                .password(passwordEncoder.encode(form.getPassword())) // 암호화
+                .password(form.getPassword()) // 암호화
                 .studentname(form.getStudentName())
                 .email(form.getEmail())
                 .phonenumber(form.getPhonenumber())
@@ -56,9 +55,9 @@ public class StudentService {
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 아이디입니다."));
 
         // 2) 비밀번호 일치 여부
-        if (!passwordEncoder.matches(form.getPassword(), student.getPassword())) {
-            throw new IllegalArgumentException("비밀번호가 올바르지 않습니다.");
-        }
+        // if (!passwordEncoder.matches(form.getPassword(), student.getPassword())) {
+        //     throw new IllegalArgumentException("비밀번호가 올바르지 않습니다.");
+        // }
 
         // 3) 로그인 성공 시 Student 반환(세션 저장 등은 컨트롤러/필터 계층에서 처리)
         return student;
