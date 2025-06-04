@@ -2,26 +2,25 @@ package fiveguys.edunet.service;
 
 import fiveguys.edunet.domain.Subject;
 import fiveguys.edunet.repository.SubjectRepository;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class SubjectService {
 
     private final SubjectRepository subjectRepository;
-
-    public SubjectService(SubjectRepository subjectRepository) {
-        this.subjectRepository = subjectRepository;
-    }
 
     public Subject save(Subject subject) {
         return subjectRepository.save(subject);
     }
 
     public boolean isSubjectCodeDuplicate(String subjectCode) {
-        return subjectRepository.existsBySubjectCode(subjectCode);
+        return true;
     }
 
     public List<Subject> findAll() {

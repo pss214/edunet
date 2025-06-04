@@ -20,7 +20,6 @@ public class Subject {
 
     @ManyToOne
     @JoinColumn(name= "student_id")
-
     private Student student;
     @Column(columnDefinition = "LONGTEXT")
     private String detail;
