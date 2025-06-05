@@ -27,7 +27,7 @@ public class Teacher extends BaseTime {
 
     @Column(unique = true)
     private String email;
-    private String number;
+    private String phone;
 
     public void changePassword(String encodedPw) {
         this.password = encodedPw;

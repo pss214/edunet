@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/signup.css}" />
+    <link rel="stylesheet" th:href="@{/css/default.css}" />
+    <script th:src="@{/js/signup.js}" defer></script>
+    <title>회원가입</title>
+  </head>
+  <body>
+    <main>
+      <section class="textArea">
+        <div class="changeUser">
+          <div>
+            <input type="checkbox" id="toggle" hidden />
+            <label for="toggle" class="toggleSwitch">
+              <span class="toggleButton"><p>S</p></span>
+            </label>
+          </div>
+          <p>선생님 이신가요?</p>
+        </div>
+
+        <div class="signupForm">
+          <div class="wrap">
+            <h2>학생 회원가입</h2>
+            <form action="post">
+              <input
+                type="text"
+                name="username"
+                placeholder="아이디"
+                required
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="비밀번호"
+                required
+              />
+              <input
+                type="password"
+                name="passwordck"
+                placeholder="비밀번호 확인"
+                required
+              />
+              <input type="text" name="name" placeholder="이름" required />
+              <input
+                type="text"
+                name="phonenumber"
+                placeholder="전화번호"
+                required
+              />
+              <input type="email" name="email" placeholder="이메일" required />
+              <input
+                type="text"
+                name="type"
+                value="student"
+                style="display: none"
+                id="userType"
+                required
+              />
+              <button>로그인</button>
+              <div>
+                <a href="#">아이디 찾기</a>|<a href="#">비밀번호 찾기</a>|
+                <a href="#">회원가입</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="imgArea">
+        <img th:src="@{image/student.png}" alt="학생 회원가입 이미지" />
+        <img
+          th:src="@{image/teacher.png}"
+          alt="선생님 회원가입 이미지"
+          class="hidden"
+        />
+      </section>
+    </main>
+  </body>
+</html>
