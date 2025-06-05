@@ -17,44 +17,204 @@
           <h1>EDUNET</h1>
           <p>부푼 꿈을 안고 EDUNET으로!</p>
           <div class="video-box">
-            <!-- 비디오 자리 -->
+            <img
+              id="login-image"
+              th:src="@{/image/student_login.png}"
+              alt="로그인 일러스트"
+            />
           </div>
         </div>
-      </div>
-      <div class="content-wrap">
+      </div><!-- 그라데이션 -->
+      
+      <div class="main-section">
         <div class="section">
-          <h1>EDUNET 부트캠프에서는?</h1>
-          <div class="description-container">
-            <div class="description">
-              카카오에서 좋은 개발자를 양성하고, 지속 가능한 개발 생태계를
-              만들기 위해 카카오의 부트캠프를 새롭게 시작합니다.<br />
-              다양한 성장, 실전 프로젝트 기반 교육, 함께하는 피어 학습, 무한한
-              성장 가능성을 만나보세요.
-            </div>
+          <h2>EDUNET 부트캠프에서는?</h2>
+          <div class="about-bootcamp">
+            카카오에서 좋은 개발자를 양성하고, 지속 가능한 개발 생태계를 만들기 위해 카카오테크 부트캠프를 새롭게 시작합니다. 
+            카카오 기술을 베이스로 한 실무 중심의 교육, 좋은 동료와 함께하는 깊이 있는 협업, 성장에만 집중할 수 있는 오프라인 
+            공간을, 개발자를 꿈꾸는 모든 예비 개발자에게 제공합니다. 성장하고 싶은 예비 개발자가 모이는 곳, 카카오테크 
+            부트캠프에서 당신의 꿈을 펼쳐보세요.
           </div>
           <div class="card-container">
-            <div class="card">다양하고 무한한 성장</div>
-            <div class="card">함께하는 디모 성장</div>
-            <div class="card">엄청난 무한성장</div>
+            <div>
+              <div class="card">
+                <img
+                  id="login-image"
+                  th:src="@{/image/student_login.png}"
+                  alt="로그인 일러스트"
+                />
+              </div>
+              <p>다양하고 무한한 성장</p>
+            </div>
+            <div>
+              <div class="card">
+                <img
+                  id="login-image"
+                  th:src="@{/image/student_login.png}"
+                  alt="로그인 일러스트"
+                />
+              </div>
+              <p>함께하는 더 큰 성장</p>
+            </div>
+            <div>
+              <div class="card">
+                <img
+                  id="login-image"
+                  th:src="@{/image/student_login.png}"
+                  alt="로그인 일러스트"
+                />
+              </div>
+              <p>엄청난 무한성장</p>
+            </div>
+          </div><!-- 카드1 -->
+        </div><!-- 세션1 -->
+
+        <div class="line"></div>
+
+        <div class="section">
+          <h3>부트캠프 둘러보기</h3>
+          <div class="section-header">
+            <h4>프론트엔드</h4>
+            <div class="arrow-buttons">
+              <button onclick="frontendscroll(-1)">&#10094;</button>
+              <button onclick="frontendscroll(1)">&#10095;</button>
+            </div>
           </div>
         </div>
 
-        <div class="section">
-          <h2>부트캠프 둘러보기</h2>
-          <h3>프론트엔드</h3>
-          <div class="course-grid">
-            <div class="course-card">Next.js 프론트엔드 교육 과정</div>
-            <div class="course-card">Next.js 프론트엔드 교육 과정</div>
-            <div class="course-card">Next.js 프론트엔드 교육 과정</div>
+        <div class="bootcamp-container-wrap">
+          <div class="bootcamp-container" id="frontend-scroll">
+            <div class="bootcamp-item">
+              <div class="bootcamp-card">
+                <img
+                  id="login-image"
+                  th:src="@{/image/student_login.png}"
+                  alt="로그인 일러스트"
+                />
+                <span class="badge">1기</span>
+              </div>
+              <p class="title">Next.js 프론트엔드 교육 과정</p>
+              <p class="date">교육 기간: 2025.06.02 ~ 2025.11.25</p>
+            </div>
+            <div class="bootcamp-item">
+              <div class="bootcamp-card">
+                <img
+                  id="login-image"
+                  th:src="@{/image/student_login.png}"
+                  alt="로그인 일러스트"
+                />
+                <span class="badge">1기</span>
+              </div>
+              <p class="title">Next.js 프론트엔드 교육 과정</p>
+              <p class="date">교육 기간: 2025.06.02 ~ 2025.11.25</p>
+            </div>
+            <div class="bootcamp-item">
+              <div class="bootcamp-card">
+                <img
+                  id="login-image"
+                  th:src="@{/image/student_login.png}"
+                  alt="로그인 일러스트"
+                />
+                <span class="badge">1기</span>
+              </div>
+              <p class="title">Next.js 프론트엔드 교육 과정</p>
+              <p class="date">교육 기간: 2025.06.02 ~ 2025.11.25</p>
+            </div>
+            <div class="bootcamp-item">
+              <div class="bootcamp-card">
+                <img
+                  id="login-image"
+                  th:src="@{/image/student_login.png}"
+                  alt="로그인 일러스트"
+                />
+                <span class="badge">1기</span>
+              </div>
+              <p class="title">Next.js 프론트엔드 교육 과정</p>
+              <p class="date">교육 기간: 2025.06.02 ~ 2025.11.25</p>
+            </div>
           </div>
-          <h3>백엔드</h3>
-          <div class="course-grid">
-            <div class="course-card">Next.js 백엔드 교육 과정</div>
-            <div class="course-card">Next.js 백엔드 교육 과정</div>
-            <div class="course-card">Next.js 백엔드 교육 과정</div>
+        </div><!-- 카드2 -->
+        <div class="section">
+          <div class="section-header">
+            <h4>백엔드</h4>
+            <div class="arrow-buttons">
+              <button onclick="backendscroll(-1)">&#10094;</button>
+              <button onclick="backendscroll(1)">&#10095;</button>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+        
+        <div class="bootcamp-container-wrap">
+          <div class="bootcamp-container" id="backend-scroll">
+            <div class="bootcamp-item">
+              <div class="bootcamp-card">
+                <img
+                  id="login-image"
+                  th:src="@{/image/student_login.png}"
+                  alt="로그인 일러스트"
+                />
+                <span class="badge">1기</span>
+              </div>
+              <p class="title">Next.js 백엔드 교육 과정</p>
+              <p class="date">교육 기간: 2025.06.02 ~ 2025.11.25</p>
+            </div>
+            <div class="bootcamp-item">
+              <div class="bootcamp-card">
+                <img
+                  id="login-image"
+                  th:src="@{/image/student_login.png}"
+                  alt="로그인 일러스트"
+                />
+                <span class="badge">1기</span>
+              </div>
+              <p class="title">Next.js 백엔드 교육 과정</p>
+              <p class="date">교육 기간: 2025.06.02 ~ 2025.11.25</p>
+            </div>
+            <div class="bootcamp-item">
+              <div class="bootcamp-card">
+                <img
+                  id="login-image"
+                  th:src="@{/image/student_login.png}"
+                  alt="로그인 일러스트"
+                />
+                <span class="badge">1기</span>
+              </div>
+              <p class="title">Next.js 백엔드 교육 과정</p>
+              <p class="date">교육 기간: 2025.06.02 ~ 2025.11.25</p>
+            </div>
+            <div class="bootcamp-item">
+              <div class="bootcamp-card">
+                <img
+                  id="login-image"
+                  th:src="@{/image/student_login.png}"
+                  alt="로그인 일러스트"
+                />
+                <span class="badge">1기</span>
+              </div>
+              <p class="title">Next.js 백엔드 교육 과정</p>
+              <p class="date">교육 기간: 2025.06.02 ~ 2025.11.25</p>
+            </div>
+          </div>
+        </div><!-- 카드2 -->
+      </main>
+    </div> <!-- 메인세션 -->
+    <script>
+      function frontendscroll(direction) {
+        const container = document.getElementById("frontend-scroll");
+        const cardWidth = 280; // 카드 너비 + gap
+        container.scrollBy({
+          left: direction * cardWidth,
+          behavior: "smooth"
+        });
+      }
+      function backendscroll(direction) {
+        const container = document.getElementById("backend-scroll");
+        const cardWidth = 280; // 카드 너비 + gap
+        container.scrollBy({
+          left: direction * cardWidth,
+          behavior: "smooth"
+        });
+      }
+    </script><!-- 버튼 이벤트 -->
   </body>
 </html>
