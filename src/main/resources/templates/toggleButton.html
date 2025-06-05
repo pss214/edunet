@@ -1,0 +1,68 @@
+<div th:fragment="toggleSwitch(toggleClass)">
+  <style>
+    .toggleSwitch {
+      width: 70px;
+      height: 30px;
+      display: block;
+      position: relative;
+      border-radius: 30px;
+      background-color: #fff;
+      box-shadow: 0 0 16px 3px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      margin: 20px;
+      transition: all 0.2s ease-in;
+    }
+    .toggleButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .toggleButton > p {
+      color: #ffffff;
+      user-select: none;
+      margin: 0;
+      transition: all 0.2s ease-in;
+    }
+    .toggleSwitch .toggleButton {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background: #b286ff;
+      transition: all 0.2s ease-in;
+    }
+    input[type="checkbox"]:checked + label.toggleSwitch {
+      background: #b286ff;
+    }
+    input[type="checkbox"]:checked + label.toggleSwitch .toggleButton {
+      left: calc(100% - 40px);
+      background: #fff;
+    }
+    input[type="checkbox"]:checked + label.toggleSwitch .toggleButton > p {
+      color: #b286ff;
+    }
+  </style>
+
+  <input type="checkbox" id="toggle" class="${toggleClass}" hidden />
+  <label for="toggle" class="toggleSwitch">
+    <span class="toggleButton"><p>S</p></span>
+  </label>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const checkbox = document.getElementById("toggle");
+      const pTag = checkbox.nextElementSibling.querySelector("p");
+
+      checkbox.addEventListener("change", function () {
+        if (checkbox.checked) {
+          pTag.textContent = "T";
+        } else {
+          pTag.textContent = "S";
+        }
+      });
+    });
+  </script>
+</div>

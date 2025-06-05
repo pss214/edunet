@@ -22,7 +22,7 @@
   width: 58px;
   height: 28px;
   background: #fff;
-  border: 2px solid #B286FF;
+  border: 2px solid #b286ff;
   border-radius: 20px;
   transition: 0.2s;
 }
@@ -37,27 +37,26 @@
   width: 20px;
   height: 20px;
   border-radius: 20px;
-  background: #B286FF;
+  background: #b286ff;
   transition: 0.2s;
 }
 
 /* checking style */
-#switch:checked+.switch_label {
-  background: #B286FF;
-  border: 2px solid #B286FF;
+#switch:checked + .switch_label {
+  background: #b286ff;
+  border: 2px solid #b286ff;
 }
 
-#switch:checked+.switch_label:hover {
-  background: #B286FF;
+#switch:checked + .switch_label:hover {
+  background: #b286ff;
 }
 
 /* move */
-#switch:checked+.switch_label .onf_btn {
+#switch:checked + .switch_label .onf_btn {
   left: 34px;
   background: #fff;
   box-shadow: 1px 2px 3px #00000020;
 }
-
 
 /* 스위치 학생, 교사 css */
 
@@ -65,10 +64,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
-body, html {
+body,
+html {
   height: 100%;
   background-color: white;
 }
@@ -138,14 +138,14 @@ body, html {
   height: auto;
 }
 
-.login_btn{
+.login_btn {
   display: block;
   width: 300px;
   padding: 15px;
   margin: 10px auto;
   border: none;
   border-radius: 10px;
-  background-color: #B286FF;
+  background-color: #b286ff;
   color: #ffffff;
   font-size: 16px;
 }
