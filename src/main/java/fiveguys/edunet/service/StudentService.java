@@ -16,17 +16,28 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class StudentService {
-
-    private final StudentRepository studentRepository;
-
-    /**
-     * 회원 가입
-     */
-    @Transactional
-    public Student create(StudentCreateForm form) {
-        // 1) 중복 아이디 검사
-        if (studentRepository.existsByUsername(form.getUsername())) {
-            throw new IllegalStateException("이미 사용 중인 아이디입니다.");
+    public void create(StudentCreateForm form){
+        if (sr.existsByUsername(form.getUsername())) {
+            return;//존재하는 학생아이디
+        }
+        if(form.getPassword().equals(form.getPasswordck())){
+            return;//비밀번호와 비밀번호확인이 다름
+        }
+        sr.save(Student.builder()
+            .username(form.getUsername())
+            .password(form.getPassword())//암호화로 바꿀 예정
+            .name(form.getName())
+            .email(form.getEmail())
+            .phone(form.getPhone())
+            .build());     
+        return;//완료되었을 때   
+    }
+    public void login(StudentLoginForm form){
+        Student student;
+        if(sr.existsByUsername(form.getUsername())){
+            student = sr.findByUsername(form.getUsername()).get();
+        }else{
+            return; //아이디 정보가 없을 때
         }
 
         // 2) 비밀번호 확인 (✔ equals 결과를 부정해야 함)

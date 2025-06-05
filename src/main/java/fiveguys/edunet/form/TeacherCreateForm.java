@@ -9,5 +9,5 @@ public class TeacherCreateForm {
     private String passwordck;
     private String Name;
     private String email;
-    private String phonenumber;
+    private String phone;
 }

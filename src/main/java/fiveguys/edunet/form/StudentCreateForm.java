@@ -7,7 +7,7 @@ public class StudentCreateForm {
     private String username;
     private String password;
     private String passwordck;
-    private String studentName;
+    private String name;
     private String email;
-    private String phonenumber;
+    private String phone;
 }

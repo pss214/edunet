@@ -36,17 +36,14 @@ public class TeacherService {
         if (!form.getPassword().equals(form.getPasswordck())) {
             throw new IllegalArgumentException("비밀번호와 비밀번호 확인이 다릅니다.");
         }
-
-        // 3) Teacher 엔티티 생성·저장
-        Teacher teacher = Teacher.builder()
-                .username(form.getUsername())
-                .password(form.getPassword()) // 암호화
-                .name(form.getName())
-                .email(form.getEmail())
-                .number(form.getPhonenumber())
-                .build();
-
-        return teacherRepository.save(teacher);
+        tr.save(Teacher.builder()
+            .username(form.getUsername())
+            .password(form.getPassword())//암호화로 바꿀 예정
+            .name(form.getName())
+            .email(form.getEmail())
+            .phone(form.getPhone())
+            .build());     
+        return;//완료되었을 때   
     }
 
     /*
