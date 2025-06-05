@@ -23,9 +23,9 @@ public class StudentService {
         sr.save(Student.builder()
             .username(form.getUsername())
             .password(form.getPassword())//암호화로 바꿀 예정
-            .studentname(form.getStudentName())
+            .name(form.getName())
             .email(form.getEmail())
-            .phonenumber(form.getPhonenumber())
+            .phone(form.getPhone())
             .build());     
         return;//완료되었을 때   
     }

@@ -25,7 +25,7 @@ public class TeacherService {
             .password(form.getPassword())//암호화로 바꿀 예정
             .name(form.getName())
             .email(form.getEmail())
-            .number(form.getPhonenumber())
+            .phone(form.getPhone())
             .build());     
         return;//완료되었을 때   
     }

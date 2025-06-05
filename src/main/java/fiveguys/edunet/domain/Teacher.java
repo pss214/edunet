@@ -22,5 +22,5 @@ public class Teacher extends BaseTime{
     private String password;
     private String name;
     private String email;
-    private String number;
+    private String phone;
 }
