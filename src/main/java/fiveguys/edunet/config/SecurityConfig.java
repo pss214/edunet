@@ -16,13 +16,15 @@ public class SecurityConfig {
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+    @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfiguration) throws Exception {
         return authConfiguration.getAuthenticationManager();
     }
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/", "/login", "/signup", "/css/**", "/js/**","/image/**").permitAll()
+                        .requestMatchers("/", "/main","/login", "/signup", "/css/**", "/js/**","/image/**").permitAll()
                         .anyRequest().authenticated());
         http.sessionManagement((session)->session
             .sessionFixation().changeSessionId()
@@ -33,7 +35,7 @@ public class SecurityConfig {
             .loginProcessingUrl("/login") 
             .usernameParameter("username")
             .passwordParameter("password")
-            .defaultSuccessUrl("/")
+            .defaultSuccessUrl("/",false)
             .permitAll()
         );
         http.logout((logout)->logout
