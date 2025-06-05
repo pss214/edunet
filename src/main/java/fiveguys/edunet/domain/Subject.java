@@ -26,12 +26,13 @@ import lombok.Setter;
 public class Subject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
     @JoinColumn(name= "student_id")
     private Student student;
+
     @Column(columnDefinition = "LONGTEXT")
     private String detail;
     @OneToOne

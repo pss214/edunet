@@ -14,8 +14,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Getter
-public class Student extends BaseTime{
-    
+
+public class Student extends BaseTime {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,5 +25,4 @@ public class Student extends BaseTime{
     private String name;
     private String email;
     private String phone;
-        
 }

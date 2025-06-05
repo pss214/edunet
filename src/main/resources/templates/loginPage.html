@@ -1,0 +1,92 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>로그인</title>
+    <link th:href="@{/css/login.css}" rel="stylesheet" />
+    <link th:href="@{/css/default.css}" rel="stylesheet" />
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-panel">
+        <div class="wrapper">
+          <input type="checkbox" id="switch" onchange="toggleLogin()" />
+          <label for="switch" class="switch_label">
+            <span class="onf_btn"></span>
+          </label>
+          <div id="login-role-label">선생님이신가요?</div>
+        </div>
+
+        <!-- 학생 로그인 -->
+        <div class="login-box" id="student-login">
+          <h2>학생 로그인</h2>
+          <input type="text" id="student-id" placeholder="아이디" />
+          <input type="password" id="student-password" placeholder="비밀번호" />
+          <button onclick="login('student')" class="login_btn">로그인</button>
+          <div class="links">
+            <a href="#">아이디 찾기</a> | <a href="#">비밀번호 찾기</a> |
+            <a href="#">회원가입</a>
+          </div>
+        </div>
+
+        <!-- 선생님 로그인 -->
+        <div class="login-box hidden" id="teacher-login">
+          <h2>선생님 로그인</h2>
+          <input type="text" id="teacher-id" placeholder="아이디" />
+          <input type="password" id="teacher-password" placeholder="비밀번호" />
+          <button onclick="login('teacher')" class="login_btn">로그인</button>
+          <div class="links">
+            <a href="#">아이디 찾기</a> | <a href="#">비밀번호 찾기</a> |
+            <a href="#">회원가입</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-panel">
+        <img
+          id="login-image"
+          th:src="@{/image/student_login.png}"
+          alt="로그인 일러스트"
+        />
+      </div>
+    </div>
+
+    <script>
+      function toggleLogin() {
+        const isChecked = document.getElementById("switch").checked;
+        document
+          .getElementById("student-login")
+          .classList.toggle("hidden", isChecked);
+        document
+          .getElementById("teacher-login")
+          .classList.toggle("hidden", !isChecked);
+        document.getElementById("login-role-label").innerText = isChecked
+          ? "학생이신가요?"
+          : "선생님이신가요?";
+        document.getElementById("login-image").src = isChecked
+          ? "/image/teacher_login.png"
+          : "/image/student_login.png";
+      }
+
+      function login(role) {
+        // 간단한 유효성 검사 (실제 서비스에선 서버 검증 필요)
+        const id = document.getElementById(`${role}-id`).value;
+        const pw = document.getElementById(`${role}-password`).value;
+
+        if (!id || !pw) {
+          alert("아이디와 비밀번호를 모두 입력해주세요.");
+          return;
+        }
+
+        // 로그인 처리 후 페이지 이동
+        window.location.href = "/main"; // 실제 라우팅 경로에 맞게 수정
+      }
+    </script>
+  </body>
+</html>

@@ -19,8 +19,8 @@ public class SubjectService {
         return subjectRepository.save(subject);
     }
 
-    public boolean isSubjectCodeDuplicate(String subjectCode) {
-        return true;
+    public boolean isSubjectCodeDuplicate(String subjectname) {
+       return subjectRepository.findBySubjectname(subjectname).isPresent();
     }
 
     public List<Subject> findAll() {
