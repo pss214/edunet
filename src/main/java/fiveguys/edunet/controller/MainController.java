@@ -20,4 +20,8 @@ public class MainController {
     public String getMain() {
         return "mainPage";
     }
+    @GetMapping("/subject")
+    public String getsubsect() {
+        return "subjectPage";
+    }
 }

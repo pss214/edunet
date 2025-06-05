@@ -26,68 +26,94 @@
 
 .hero {
   text-align: center;
-  padding: 60px 20px;
 }
 
 .hero h1 {
-  font-size: 48px;
+  margin-top: -12px;
+  font-size: 88px;
   color: white;
   margin-bottom: 0.5rem;
 }
 
 .hero p {
   color: white;
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: -20px;
   margin-bottom: 40px;
 }
 
 .video-box {
-  width: 80%;
-  max-width: 600px;
-  height: 340px;
+  width: 1100px;
+  aspect-ratio: 16/9;
+  overflow: hidden;
   margin: 0 auto;
   background-color: #ccc;
-}
-main {
-  width: 1400px;
-  margin: 0 auto;
-}
-.section {
-  padding: 40px 20px;
-  text-align: center;
+  position: relative;
 }
 
-.section h1 {
-  color: #000;
-  font-size: 20px;
+.video-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ✅ div 비율에 꽉 맞춤 */
+  display: block;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #b286ff;
+  margin-top: 100px;
+  margin-bottom: 70px;
+}
+
+.main-section {
+  width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+
+.section {
+  width: 100%;
+  height: auto;
+}
+
+.about-bootcamp {
+  width: 100%;
+  border-radius: 10px;
+  background-color: #eeeeee;
+  font-size: 18px;
+  margin-top: 20px;
+  padding: 30px;
 }
 
 .section h2 {
-  color: #000;
-  font-size: 42px;
+  color: #b286ff;
+  text-align: left;
+  font-size: 30px;
+  margin-bottom: 20px;
 }
 
 .section h3 {
-  font-weight: bold;
-  margin: 40px 0 20px;
+  margin: 15px;
   color: #000;
+  text-align: center;
+  font-size: 48px;
+  margin-bottom: 50px;
+}
+
+.section h4 {
+  width: 50%;
+  color: #000;
+  text-align: left;
+  font-size: 24px;
+}
+
+.section p {
+  color: #b286ff;
+  text-align: center;
   font-size: 20px;
-  margin: 10px;
-}
-
-.description-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-  line-height: 1.6;
-}
-
-.description {
-  width: auto;
-  height: auto;
-  background-color: #eee;
-  border-radius: 10px;
+  font-weight: 600;
   padding: 10px;
 }
 
@@ -95,35 +121,109 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 32px;
   margin-top: 30px;
 }
 
 .card {
-  width: 240px;
-  height: 140px;
-  background-color: #eee;
+  width: 312px;
+  height: 180px;
+  background-color: #c9c9c9;
   border-radius: 10px;
-  padding: 10px;
 }
 
-.course-grid {
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ✅ div 비율에 꽉 맞춤 */
+  display: block;
+}
+
+.section-header {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 60px;
+  justify-content: space-between; /* 양쪽 끝 정렬 */
+  align-items: center;
+  margin: 15px 0px;
 }
 
-.course-card {
-  width: 240px;
-  height: 140px;
-  background-color: #ddd;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.login-button {
-  margin-left: 50%;
+.arrow-buttons button {
+  background: none;
+  border: none;
+  font-size: 18px;
   cursor: pointer;
+  padding: 5px 8px;
+}
+
+.bootcamp-container-wrap {
+  position: relative;
+}
+.bootcamp-container-wrap::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 100%;
+  background: linear-gradient(to left, #fcfbff, transparent);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.bootcamp-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding-bottom: 10px;
+}
+
+.bootcamp-container::-webkit-scrollbar {
+  display: none;
+}
+
+.bootcamp-item {
+  flex: 0 0 auto;
+  width: 260px;
+  border-radius: 12px;
+  text-align: left;
+  color: #333;
+}
+
+.bootcamp-card {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #dcdcdc;
+  border-radius: 12px;
+  position: relative;
+}
+
+.bootcamp-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover; /*✅ div 비율에 꽉 맞춤  */
+  display: block;
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #575757;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 17px;
+  border-radius: 15px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
+  color: #b286ff;
+  margin-top: 6px;
+}
+
+.date {
+  font-weight: 600;
+  font-size: 12px;
+  color: #aaaaaa;
 }
