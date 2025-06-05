@@ -1,12 +1,43 @@
 package fiveguys.edunet.service;
 
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fiveguys.edunet.domain.Teacher;
+import fiveguys.edunet.form.CreateForm;
+import fiveguys.edunet.form.LoginForm;
+import fiveguys.edunet.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 public class TeacherService {
+    private final TeacherRepository tr;
+    private final PasswordEncoder encoder;
+    public void signup(CreateForm studentCreateForm) {
+      System.out.println("값 들어옴");
+        if(tr.existsByUsername(studentCreateForm.getUsername())) {
+            throw new UsernameNotFoundException("ID 중복");
+        }
+        if (!studentCreateForm.getPassword().equals(studentCreateForm.getPasswordck())) {
+            throw new IllegalArgumentException("PW 다름");
+        }
+        tr.save(Teacher.builder()
+        .username(studentCreateForm.getUsername())
+        .password(encoder.encode(studentCreateForm.getPassword()))
+        .email(studentCreateForm.getEmail())
+        .phone(studentCreateForm.getPhone())
+        .name(studentCreateForm.getName())
+        .build()
+        );
+    }
+    public boolean signin(LoginForm form) {
+        if(tr.existsByUsername(form.getUsername())) {
+            Teacher teacher = tr.findByUsername(form.getUsername()).get();
+            if(encoder.matches(form.getPassword(), teacher.getPassword())) return true;
+        }
+        return false;
+    }
 }

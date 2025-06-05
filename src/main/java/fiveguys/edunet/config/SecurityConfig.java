@@ -24,23 +24,19 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/", "/main","/login", "/signup", "/css/**", "/js/**","/image/**").permitAll()
+                        .requestMatchers("/error/**","/", "/main","/login", "/signup", "/css/**", "/js/**","/image/**").permitAll()
                         .anyRequest().authenticated());
         http.sessionManagement((session)->session
             .sessionFixation().changeSessionId()
         );
 
         http.formLogin((login)->login
-            .loginPage("/login")
-            .loginProcessingUrl("/login") 
-            .usernameParameter("username")
-            .passwordParameter("password")
-            .defaultSuccessUrl("/",false)
-            .permitAll()
+           
+            .disable()
         );
         http.logout((logout)->logout
             .logoutUrl("/logout")
-            .logoutSuccessUrl("/")
+            .logoutSuccessUrl("/login")
             .invalidateHttpSession(true)
             .permitAll()
         );
