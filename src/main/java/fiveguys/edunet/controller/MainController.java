@@ -16,6 +16,10 @@ public class MainController {
     public String getLogin() {
         return "loginPage";
     }
+    @GetMapping("/signup")
+    public String getSignup() {
+        return "signupPage";
+    }
     @GetMapping("/main")
     public String getMain() {
         return "mainPage";
