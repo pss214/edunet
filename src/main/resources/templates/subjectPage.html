@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>과목페이지</title>
+    <link th:href="@{/css/subject.css}" rel="stylesheet" />
+  </head>
+  <body>
+    <div layout:fragment="content" xmlns:th="http://www.thymeleaf.org">
+      <div class="main-subject-section">
+        <div class="subject-img-card"></div>
+        <div class="Information">
+          <div class="Deadline">2025.06.02 마감</div>
+          <h1>Next js 프론트엔드 교육 과정 N기</h1>
+          <div class="subject-content">
+            <h2>강좌 정보</h2>
+            <div class="content-data">
+              <p>교육기간 OOOO.OO.OO ~ OOOO.OO.OO</p>
+              <p>교육일정 09:00 ~ 17:40 (8시간)[월, 화, 수, 목, 금]</p>
+              <p>장소 주소</p>
+              <p>강사 강사 이름</p>
+              <p>모집인원 OO명</p>
+            </div>
+          </div>
+          <div class="Information-img"></div>
+        </div>
+      </div>
+    </div>
+    <!-- thymeleaf -->
+  </body>
+</html>

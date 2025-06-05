@@ -28,4 +28,8 @@ public class MainController {
     public String getMain(Model model) {
         return "mainPage";
     }
+    @GetMapping("/subject")
+    public String getsubsect() {
+        return "subjectPage";
+    }
 }
