@@ -1,9 +1,15 @@
 package fiveguys.edunet.service;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import fiveguys.edunet.domain.Teacher;
 import fiveguys.edunet.form.CreateForm;
@@ -13,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class TeacherService {
+public class TeacherService implements UserDetailsService{
     private final TeacherRepository tr;
     private final PasswordEncoder encoder;
     public void signup(CreateForm studentCreateForm) {
@@ -38,6 +44,20 @@ public class TeacherService {
             Teacher teacher = tr.findByUsername(form.getUsername()).get();
             if(encoder.matches(form.getPassword(), teacher.getPassword())) return true;
         }
-        return false;
+        throw new UsernameNotFoundException("아이디나 비밀번호가 일치하지 않습니다 다시 입력해주세요");
+    }
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<Teacher> userOptional = tr.findByUsername(username);
+        if (userOptional.isEmpty()) {
+            throw new UsernameNotFoundException("아이디나 비밀번호가 일치하지 않습니다 다시 입력해주세요");
+        }
+
+        Teacher foundUser = userOptional.get();
+        return new User(
+            foundUser.getUsername(),
+            foundUser.getPassword(),
+            List.of(new SimpleGrantedAuthority("ROLE_ADMIN"))
+        );
     }
 }

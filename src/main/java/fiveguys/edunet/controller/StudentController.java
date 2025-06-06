@@ -10,21 +10,38 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import fiveguys.edunet.domain.Student;
-import fiveguys.edunet.form.CreateForm;
-import fiveguys.edunet.repository.StudentRepository;
-import fiveguys.edunet.service.CustomDetailService;
+import fiveguys.edunet.filter.SessionConst;
+import fiveguys.edunet.form.LoginForm;
 import fiveguys.edunet.service.StudentService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequestMapping("/student")
 @RequiredArgsConstructor
-
 public class StudentController {
   private final StudentService studentService;
-  private final CustomDetailService customDetailService;
+  @PostMapping("/login")
+  public String postSignin(@ModelAttribute("login")LoginForm form,Model model,
+  RedirectAttributes redirectAttributes , HttpServletRequest request){
+    try {
+        studentService.signin(form);
+        UserDetails userDetails = studentService.loadUserByUsername(form.getUsername());
+        Authentication auth = new UsernamePasswordAuthenticationToken(
+        userDetails, userDetails.getPassword(), userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(auth);
+        HttpSession session = request.getSession();
+        session.setAttribute(SessionConst.LOGIN_MEMBER, userDetails);
+        session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+        return "redirect:/main";
+    } catch (UsernameNotFoundException e) {
+      redirectAttributes.addFlashAttribute("error","로그인 실패 : "+e.getMessage());
+      return "redirect:/login";
+    }
     
+  }
+        
 }

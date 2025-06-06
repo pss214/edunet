@@ -4,6 +4,7 @@ const sectionImgs = document.querySelectorAll(".imgArea > img");
 const teacherImg = document.querySelector(".imgArea > .teacherImg");
 const signupTitle = document.querySelector(".loginForm > .wrap > h2");
 const userType = document.querySelector("#userType");
+const theForm = document.frmSubmit;
 
 checkbox.addEventListener("change", function () {
   sectionImgs.forEach((sectionImg) => {
@@ -16,10 +17,12 @@ checkbox.addEventListener("change", function () {
   if (checkbox.checked) {
     pTag.textContent = "T";
     signupTitle.textContent = "강사 로그인";
-    userType.value = "teacher";
+    // userType.value = "teacher";
+    theForm.action = "/teacher/login";
   } else {
     pTag.textContent = "S";
     signupTitle.textContent = "학생 로그인";
-    userType.value = "student";
+    // userType.value = "student";
+    theForm.action = "/student/login";
   }
 });

@@ -2,6 +2,7 @@
 <html
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 >
   <head>
     <meta charset="UTF-8" />
@@ -16,9 +17,19 @@
         <div>
           <a href="#">학교 소개</a>
           <a href="#">교육 과정 소개</a>
-          <a href="#">관리자 페이지</a>
+          <div sec:authorize="hasRole('ADMIN')">
+            <a href="/admin">관리자 페이지</a>
+          </div>
         </div>
-        <a href="/login">로그인</a>
+          <div th:if="${session.loginMember != null}">
+            <p>
+              <span th:text="${session.loginMember.username}"></span>님 반갑습니다!
+              <a href="/logout">로그아웃</a>
+            </p>
+          </div>
+          <div th:if="${session.loginMember == null}">
+            <a href="/login">로그인</a>
+          </div>
       </div>
     </header>
 

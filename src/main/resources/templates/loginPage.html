@@ -24,7 +24,8 @@
         <div class="loginForm">
           <div class="wrap">
             <h2>학생 로그인</h2>
-            <form action="/login" method="post" th:object="${login}">
+            <p th:if="${error}" th:text="${error}" style="color:red;"></p>
+            <form action="/student/login" method="post" th:object="${login}" name="frmSubmit">
               <input
                 type="text"
                 name="username"
@@ -35,15 +36,6 @@
                 type="password"
                 name="password"
                 placeholder="비밀번호"
-                required
-              />
-              <input
-                type="text"
-                name="user"
-                value="student"
-                style="display: none"
-                id="userType"
-                disabled
                 required
               />
               <button type="submit">로그인</button>

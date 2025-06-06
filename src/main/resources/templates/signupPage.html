@@ -24,6 +24,7 @@
         <div class="signupForm">
           <div class="wrap">
             <h2>학생 회원가입</h2>
+            <p th:if="${error}" th:text="${error}" style="color:red;"></p>
             <form action="/signup" method="post" th:object="${signup}">
               <input
                 type="text"
@@ -46,7 +47,7 @@
               <input type="text" name="name" placeholder="이름" required />
               <input
                 type="text"
-                name="phonenumber"
+                name="phone"
                 placeholder="전화번호"
                 required
               />

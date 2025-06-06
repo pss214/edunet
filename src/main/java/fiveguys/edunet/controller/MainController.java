@@ -1,9 +1,7 @@
 package fiveguys.edunet.controller;
 
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,12 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import fiveguys.edunet.domain.CustomUserDetails;
 import fiveguys.edunet.form.CreateForm;
 import fiveguys.edunet.form.LoginForm;
-import fiveguys.edunet.service.CustomDetailService;
 import fiveguys.edunet.service.StudentService;
 import fiveguys.edunet.service.TeacherService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
@@ -28,10 +25,13 @@ import lombok.RequiredArgsConstructor;
 public class MainController {
     private final StudentService studentService;
     private final TeacherService teacherService;
-    private final CustomDetailService customDetailService;
     @GetMapping("")
-    public String getIndex(){
-        return "redirect:/login";
+    public String getIndex(HttpServletRequest request, Model model){
+        HttpSession session = request.getSession(false);
+        if ( session == null) {
+			return "redirect:/login";
+		}
+        return "redirect:/main";
     }
     @GetMapping("/login")
     public String getLogin(Model model) {
@@ -50,46 +50,26 @@ public class MainController {
                 studentService.signup(form);
             } catch (Exception e) {
                 redirectAttributes.addFlashAttribute("error","회원가입 실패 : "+e.getMessage());
-                e.printStackTrace();
-                return "redirect:/singup";
+                return "redirect:/signup";
             }
         }else{
             try {
                 teacherService.signup(form);
             } catch (Exception e) {
                 redirectAttributes.addFlashAttribute("error","회원가입 실패 : "+e.getMessage());
-                e.printStackTrace();
-                return "redirect:/singup";
+                return "redirect:/signup";
             }
         }
         return "redirect:/main";
     }
     @GetMapping("/main")
     public String getMain(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("현재 사용자: " + auth.getName());  // anonymousUser? 또는 실제 유저?
         return "mainPage";
     }
-    @PostMapping("/login")
-    public String postSignin(@ModelAttribute("login")LoginForm form,Model model){
-        if(form.getUser().equals("student")){
-            System.out.println("student로 이동됨");
-            if(studentService.signin(form)) {
-                UserDetails userDetails = customDetailService.loadUserByUsername(form.getUsername());
-                Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            } else {
-                return "redirect:/login";
-            }
-        }else{
-            System.out.println("teacher로 이동됨");
-            if(teacherService.signin(form)) {
-                UserDetails userDetails = new CustomUserDetails( form.getUsername(),"","ADMIN");
-                Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            } else {
-                System.out.println("강사 로그인 실패함");
-                return "redirect:/login";
-            }
-        }
-        return "redirect:/main";
+    @GetMapping("/subject")
+    public String getSubject(HttpServletRequest request,Model model) {
+        return "subjectPage";
     }
 }
