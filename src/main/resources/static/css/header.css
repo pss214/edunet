@@ -5,9 +5,9 @@ header {
 }
 
 header a {
-  color: #fcfbff;
   font-weight: 600;
   font-size: 1rem;
+  color: #fff;
 }
 
 header > .wrap {
@@ -25,4 +25,14 @@ header > .wrap > div {
   display: flex;
   justify-content: left;
   column-gap: 20px;
+}
+header > .wrap > div:last-child {
+  margin-left: auto;
+  display: flex;
+}
+header > .wrap > div:last-child > div > p > a {
+  margin-left: 12px;
+}
+header > .wrap > div:last-child > div:first-child {
+  margin-left: auto;
 }
