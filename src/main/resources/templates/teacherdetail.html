@@ -14,15 +14,15 @@
   <body>
     <div layout:fragment="content" xmlns:th="http://www.thymeleaf.org">
       <div class="main-teacherdetail-section">
+        <h1>Next js 프론트엔드 교육 과정 N기</h1>
         <div class="subject-Progress">
           <h2>수업 진행률</h2>
           <div class="progress-card">
             <div class="progress-text">76%(92/120)</div>
             <div class="progress-bar-wrapper">
-              <div
-                class="progress-bar-fill"
-                th:style="'width: ' + ${progress} + '%'"
-              ></div>
+              <div class="progress-bar-fill" th:style="'width: 76%'">
+                <div class="bar-end"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -32,10 +32,9 @@
           <div class="progress-card">
             <div class="progress-text">76%(92/120)</div>
             <div class="progress-bar-wrapper">
-              <div
-                class="progress-bar-fill"
-                th:style="'width: ' + ${progress} + '%'"
-              ></div>
+              <div class="progress-bar-fill" th:style="'width: 76%'">
+                <div class="bar-end"></div>
+              </div>
             </div>
             <div class="Attendance-container">
               <div class="Attendance-type">
