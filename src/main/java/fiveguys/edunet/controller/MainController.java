@@ -60,7 +60,7 @@ public class MainController {
                 return "redirect:/signup";
             }
         }
-        return "redirect:/main";
+        return "redirect:/login";
     }
     @GetMapping("/main")
     public String getMain(Model model) {

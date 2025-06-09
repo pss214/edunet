@@ -24,8 +24,13 @@
         <div class="loginForm">
           <div class="wrap">
             <h2>학생 로그인</h2>
-            <p th:if="${error}" th:text="${error}" style="color:red;"></p>
-            <form action="/student/login" method="post" th:object="${login}" name="frmSubmit">
+            <p th:if="${error}" th:text="${error}" style="color: red"></p>
+            <form
+              action="/student/login"
+              method="post"
+              th:object="${login}"
+              name="frmSubmit"
+            >
               <input
                 type="text"
                 name="username"
