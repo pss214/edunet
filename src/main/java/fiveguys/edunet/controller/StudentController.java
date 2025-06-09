@@ -18,6 +18,9 @@ import fiveguys.edunet.service.StudentService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping("/student")
@@ -43,5 +46,10 @@ public class StudentController {
     }
     
   }
+  @GetMapping("/detail")
+  public String getDetail(Model model) {
+      return "studentdetail";
+  }
+  
         
 }
