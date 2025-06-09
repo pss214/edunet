@@ -5,26 +5,44 @@
 }
 
 .main-studentdetail-section h1 {
-  padding: 30px 0px;
+  padding: 40px 0px;
   font-size: 48px;
 }
 
+.img-Information-container {
+  display: flex;
+  justify-content: center; /* 균등 배치 */
+  gap: 52px; /* 요소 간 간격 */
+  margin-bottom: 20px;
+}
+
 .student-img-card {
-  width: 100%;
+  width: 674px;
   height: 400px;
   border-radius: 15px;
   background-color: #c0c0c0;
   margin: 20px 0px;
 }
 
-.subject-Information {
-  font-size: 24px;
+.Information-card {
+  width: 674px;
+  height: 400px;
+  border-radius: 15px;
+  font-size: 32px;
+  background-color: white;
+  padding: 20px;
   color: #c0c0c0;
-  padding: 20px 0px;
+  margin: 20px 0px;
+}
+
+.Information-card h3 {
+  font-size: 40px;
+  color: #b286ff;
+  margin: 20px 0px;
 }
 
 .subject-Progress h2 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   padding: 20px 0px;
 }
@@ -35,7 +53,7 @@
   height: auto;
   border-radius: 15px;
   background-color: white;
-  box-shadow: 5px 5px 5px 5px #f3ebff;
+  box-shadow: 0px 8px 16px #b286ff40;
 }
 
 .progress-text {
@@ -45,23 +63,35 @@
   margin-bottom: 20px;
 }
 
+.progress-text span {
+  color: #b286ff;
+  font-size: 20px;
+}
+
 .progress-bar-wrapper {
   background: #e4e0ed;
   height: 6px;
   border-radius: 3px;
-  overflow: hidden;
-  margin-top: 8px;
+  margin: 40px 0px;
 }
 
 .progress-bar-fill {
   height: 100%;
   background-color: #b286ff;
   transition: width 0.5s;
-  margin-bottom: 20px;
+}
+
+.bar-end {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  background-color: #b286ff;
+  margin-left: auto;
+  transform: translate(6px, -5px);
 }
 
 .subject-Attendance h2 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   padding: 20px 0px;
 }
@@ -105,7 +135,7 @@
   height: auto;
   border-radius: 15px;
   background-color: white;
-  box-shadow: 5px 5px 5px 5px #f3ebff;
+  box-shadow: 0px 8px 16px #b286ff40;
 }
 
 .subject-data-title {

@@ -5,11 +5,17 @@
   margin-top: 50px;
 }
 
+.main-teacherdetail-section h1 {
+  padding: 40px 0px;
+  font-size: 48px;
+  text-align: center;
+}
+
 .class-consultation {
   display: flex;
   justify-content: center; /* 균등 배치 */
   gap: 52px; /* 요소 간 간격 */
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .class-journal,
@@ -20,7 +26,8 @@
 
 .class-journal h1,
 .consultation-journal h1 {
-  margin-bottom: 20px;
+  font-size: 28px;
+  text-align: left;
 }
 
 .class-card {
@@ -29,7 +36,7 @@
   height: auto;
   border-radius: 15px;
   background-color: white;
-  box-shadow: 5px 5px 5px 5px #f3ebff;
+  box-shadow: 0px 8px 16px #b286ff40;
 }
 
 .consultation-card {
@@ -38,11 +45,13 @@
   height: auto;
   border-radius: 15px;
   background-color: white;
-  box-shadow: 5px 5px 5px 5px #f3ebff;
+  box-shadow: 0px 8px 16px #b286ff40;
 }
 
 .Attendance-book h1 {
-  margin: 30px 0px;
+  text-align: left;
+  font-size: 28px;
+  margin-top: 25px;
 }
 
 .Attendance-book-card {
@@ -51,7 +60,7 @@
   height: auto;
   border-radius: 15px;
   background-color: white;
-  box-shadow: 5px 5px 5px 5px #f3ebff;
+  box-shadow: 0px 8px 16px #b286ff40;
 }
 
 .attendance-header,
