@@ -24,9 +24,6 @@
   margin-bottom: -10px;
 }
 
-.Information {
-}
-
 .Information h1 {
   font-size: 48px;
   text-align: left;
@@ -64,4 +61,24 @@
   border-radius: 15px;
   background-color: #c0c0c0;
   margin-top: 50px;
+}
+
+button {
+  padding: 10px 128px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px;
+  background: #b286ff;
+  color: white;
+  cursor: pointer;
+  transition: all 75ms;
+  display: block;
+  margin: 20px auto 0 auto;
+}
+button:hover {
+  filter: brightness(0.95);
+}
+button:active {
+  filter: brightness(0.8);
 }
