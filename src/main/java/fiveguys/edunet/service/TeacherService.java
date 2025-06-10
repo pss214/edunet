@@ -39,21 +39,6 @@ public class TeacherService implements UserDetailsService{
         .build()
         );
     }
-    public void idfind(CreateForm studentCreateForm) {
-      System.out.println("값 들어옴");
-        tr.save(Teacher.builder()
-        .email(studentCreateForm.getEmail())
-        .build()
-        );
-    }
-    public void password(CreateForm studentCreateForm) {
-      System.out.println("값 들어옴");
-        tr.save(Teacher.builder()
-        .username(studentCreateForm.getUsername())
-        .email(studentCreateForm.getEmail())
-        .build()
-        );
-    }
     public boolean signin(LoginForm form) {
         if(tr.existsByUsername(form.getUsername())) {
             Teacher teacher = tr.findByUsername(form.getUsername()).get();
