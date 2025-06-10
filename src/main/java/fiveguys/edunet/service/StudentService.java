@@ -38,6 +38,19 @@ public class StudentService implements UserDetailsService{
         .build()
         );
     }
+    public void idfind(CreateForm studentCreateForm) {
+        sr.save(Student.builder()
+        .email(studentCreateForm.getEmail())
+        .build()
+        );
+    }
+    public void password(CreateForm studentCreateForm) {
+        sr.save(Student.builder()
+        .username(studentCreateForm.getUsername())
+        .email(studentCreateForm.getEmail())
+        .build()
+        );
+    }
     public boolean signin(LoginForm form) {
         if(sr.existsByUsername(form.getUsername())) {
             Student student = sr.findByUsername(form.getUsername()).get();

@@ -31,7 +31,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/error/**","/", "/main","/login", "/signup", "/css/**", "/js/**",
-                        "/image/**","/student/login","/teacher/login","/student/detail").permitAll()
+                        "/image/**","/student/login","/teacher/login","/student/detail","/idfind","/password").permitAll()
                         .requestMatchers("/subject").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated());
         http.sessionManagement((session)->session
