@@ -71,7 +71,54 @@ public class MainController {
         }
         return "redirect:/login";
     }
-
+    @GetMapping("/idfind")
+    public String getidfind(Model model) {
+        model.addAttribute("signup", new CreateForm());
+        return "idfindPage";
+    }
+    @PostMapping("/idfind")
+    public String postidfind(Model model,@ModelAttribute("idfind")CreateForm form, RedirectAttributes redirectAttributes){
+        if(form.getType().equals("student")){
+            try {
+                studentService.idfind(form);
+            } catch (Exception e) {
+                redirectAttributes.addFlashAttribute("error","아이디 찾기 실패 : "+e.getMessage());
+                return "redirect:/idfind";
+            }
+        }else{
+            try {
+                teacherService.idfind(form);
+            } catch (Exception e) {
+                redirectAttributes.addFlashAttribute("error","아이디 찾기 실패 : "+e.getMessage());
+                return "redirect:/idfind";
+            }
+        }
+        return "redirect:/login";
+    }
+    @GetMapping("/password")
+    public String getpassword(Model model) {
+        model.addAttribute("signup", new CreateForm());
+        return "passwordPage";
+    }
+    @PostMapping("/password")
+    public String postpassword(Model model,@ModelAttribute("password")CreateForm form, RedirectAttributes redirectAttributes){
+        if(form.getType().equals("student")){
+            try {
+                studentService.password(form);
+            } catch (Exception e) {
+                redirectAttributes.addFlashAttribute("error","아이디 찾기 실패 : "+e.getMessage());
+                return "redirect:/password";
+            }
+        }else{
+            try {
+                teacherService.password(form);
+            } catch (Exception e) {
+                redirectAttributes.addFlashAttribute("error","아이디 찾기 실패 : "+e.getMessage());
+                return "redirect:/password";
+            }
+        }
+        return "redirect:/login";
+    }
     @GetMapping("/main")
     public String getMain(Model model) {
         List<Subject> subjects = subjectService.findAll();
