@@ -30,15 +30,18 @@
   border-radius: 15px;
   font-size: 32px;
   background-color: white;
-  padding: 20px;
+  box-shadow: 0px 8px 16px #b286ff40;
+  padding: 30px 60px;
   color: #c0c0c0;
+  line-height: 150%;
   margin: 20px 0px;
 }
 
 .Information-card h3 {
   font-size: 40px;
   color: #b286ff;
-  margin: 20px 0px;
+  margin-bottom: 30px;
+  margin-left: -30px;
 }
 
 .subject-Progress h2 {
