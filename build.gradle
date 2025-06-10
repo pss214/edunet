@@ -45,6 +45,8 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	// spring security
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	implementation 'org.seleniumhq.selenium:selenium-java:4.21.0'
 }
 
 tasks.named('test') {
