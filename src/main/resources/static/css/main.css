@@ -194,6 +194,7 @@
   background-color: #dcdcdc;
   border-radius: 12px;
   position: relative;
+  overflow: hidden;
 }
 
 .bootcamp-card img {

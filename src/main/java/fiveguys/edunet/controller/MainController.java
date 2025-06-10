@@ -3,17 +3,21 @@ package fiveguys.edunet.controller;
 import java.util.List;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fiveguys.edunet.domain.Subject;
 import fiveguys.edunet.form.CreateForm;
+import fiveguys.edunet.form.CreateSubject;
 import fiveguys.edunet.form.LoginForm;
 import fiveguys.edunet.service.StudentService;
 import fiveguys.edunet.service.SubjectService;
@@ -96,21 +100,28 @@ public class MainController {
         return "mainPage";
     }
 
-    @GetMapping("/subject")
-    public String getSubject(HttpServletRequest request, Model model) {
+    @GetMapping("/subject/{id}")
+    public String getSubject(HttpServletRequest request, Model model,@PathVariable Long id) {
+        Subject subject= subjectService.findById(id);
+        model.addAttribute("subject", subject);
+        model.addAttribute("teacher", subject.getTeacher());
         return "subjectPage";
     }
 
     @GetMapping("/student")
-    public String getstudent(HttpServletRequest request, Model model) {
+    public String getstudent(HttpServletRequest request, Model model, @AuthenticationPrincipal User user) {
+        model.addAttribute("subject", subjectService.myClass(user.getUsername()));
         return "studentdetail";
     }
+    
     @GetMapping("/create-subject")
     public String getcreateSubject(HttpServletRequest request,Model model) {
+        model.addAttribute("object", new CreateSubject());
         return "createSubjectPage";
     }
     @GetMapping("/teacher")
     public String getteacher(HttpServletRequest request, Model model) {
         return "teacherdetail";
     }
+    
 }

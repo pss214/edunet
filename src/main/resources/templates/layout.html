@@ -13,12 +13,15 @@
   <body>
     <header>
       <div class="wrap">
-        <a href="#"><img th:src="@{/image/logo.png}" alt="logo" /></a>
+        <a th:href="@{/main}"><img th:src="@{/image/logo.png}" alt="logo" /></a>
         <div>
           <a href="#">학교 소개</a>
           <a href="#">교육 과정 소개</a>
+          <div sec:authorize="hasRole('USER')">
+            <a th:href="@{/student}">나의 강의실</a>
+          </div>
           <div sec:authorize="hasRole('ADMIN')">
-            <a th:href="@{/admin}">관리자 페이지</a>
+            <a th:href="@{/teacher}">관리자 페이지</a>
           </div>
         </div>
         <div>

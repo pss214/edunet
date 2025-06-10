@@ -8,28 +8,35 @@
   <head>
     <meta charset="UTF-8" />
     <title>과목페이지</title>
-    <link th:href="@{/css/subject.css}" rel="stylesheet" />
+    <link th:href="@{/css/subjectPage.css}" rel="stylesheet" />
+    <script th:src="@{/js/subjectPage.js}" defer></script>
   </head>
   <body>
     <div layout:fragment="content" xmlns:th="http://www.thymeleaf.org">
       <div class="main-subject-section">
-        <div class="subject-img-card"></div>
         <div class="Information">
-          <div class="Deadline">2025.06.02 마감</div>
-          <h1>Next js 프론트엔드 교육 과정 N기</h1>
+          <div class="Deadline" th:text="${subject.endDay}"></div>
+          <h1 th:text="${subject.subjectname}"></h1>
           <div class="subject-content">
             <h2>강좌 정보</h2>
             <div class="content-data">
-              <p>교육기간 OOOO.OO.OO ~ OOOO.OO.OO</p>
-              <p>교육일정 09:00 ~ 17:40 (8시간)[월, 화, 수, 목, 금]</p>
-              <p>장소 주소</p>
-              <p>강사 강사 이름</p>
-              <p>모집인원 OO명</p>
+              <p
+                th:text="'교육기간: ' + ${subject.startDay} + ' ~ ' + ${subject.endDay}"
+              ></p>
+              <p
+                th:text="'교육일정: ' + ${subject.startTime} + '~' + ${subject.endTime}"
+              ></p>
+              <p th:text="'모집인원: ' + ${subject.attend} + '명'"></p>
+              <p th:text="'강사명: ' + ${teacher.name}"></p>
+              <p th:text="'수강료: ' + ${subject.price} + '원'"></p>
             </div>
           </div>
         </div>
-        <div class="Information-img"></div>
-        <button>수강신청</button>
+        <h2 class="poster-title">강좌 포스터</h2>
+        <div class="Information-img">
+          <img th:src="${subject.poster}" alt="수업 포스터" />
+        </div>
+        <button class="submit-button">수강신청</button>
       </div>
     </div>
     <!-- thymeleaf -->

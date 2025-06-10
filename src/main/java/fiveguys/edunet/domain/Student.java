@@ -41,4 +41,7 @@ public class Student extends BaseTime implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
+    public void setSubject(Subject subject){
+        this.subject = subject;
+    }
 }
