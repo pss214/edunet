@@ -76,4 +76,8 @@ public class MainController {
     public String getstudent(HttpServletRequest request,Model model) {
         return "studentdetail";
     }
+    @GetMapping("/create-subject")
+    public String getcreateSubject(HttpServletRequest request,Model model) {
+        return "createSubjectPage";
+    }
 }
