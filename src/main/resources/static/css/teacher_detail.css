@@ -1,0 +1,93 @@
+.main-teacherdetail-section {
+  width: 1400px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  margin-top: 50px;
+}
+
+.main-teacherdetail-section h1 {
+  padding: 40px 0px;
+  font-size: 48px;
+  text-align: center;
+}
+
+.class-consultation {
+  display: flex;
+  justify-content: center; /* 균등 배치 */
+  gap: 52px; /* 요소 간 간격 */
+  margin-top: 25px;
+}
+
+.class-journal,
+.consultation-journal {
+  width: 674px;
+  height: auto;
+}
+
+.class-journal h1,
+.consultation-journal h1 {
+  font-size: 28px;
+  text-align: left;
+}
+
+.class-card {
+  padding: 30px 50px;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0px 8px 16px #b286ff40;
+}
+
+.consultation-card {
+  padding: 30px 50px;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0px 8px 16px #b286ff40;
+}
+
+.Attendance-book h1 {
+  text-align: left;
+  font-size: 28px;
+  margin-top: 25px;
+}
+
+.Attendance-book-card {
+  padding: 30px 50px;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0px 8px 16px #b286ff40;
+}
+
+.attendance-header,
+.attendance-list .attendance-item {
+  display: flex;
+  padding: 12px 0;
+  list-style: none;
+}
+
+.attendance-header {
+  font-weight: bold;
+}
+
+.attendance-list {
+  padding: 0;
+  margin: 0;
+}
+
+.attendance-item {
+  align-items: center;
+}
+
+.col {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.col.action {
+  text-align: center;
+}

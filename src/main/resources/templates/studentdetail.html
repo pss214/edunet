@@ -1,11 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout}"
+>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>학생정보페이지</title>
+    <link th:href="@{/css/student_detail.css}" rel="stylesheet" />
   </head>
   <body>
-    <h1>Hi</h1>
+    <div layout:fragment="content" xmlns:th="http://www.thymeleaf.org">
+      <div class="main-studentdetail-section">
+        <h1>Next js 프론트엔드 교육 과정 N기</h1>
+        <div class="img-Information-container">
+          <div class="student-img-card"></div>
+          <div class="Information-card">
+            <h3>소개</h3>
+            ● 훈련 회차: O회차<br />
+            ● 훈련 기관: 글로벌아카데미<br />
+            ● 기관 위치: 경기도 화성시<br />
+            ● 전화번호: 010-1234-5678<br />
+            ● 훈련 기간: 2024.12.26~2025.06.30
+          </div>
+        </div>
+        <div class="subject-Progress">
+          <h2>수업 진행률</h2>
+          <div class="progress-card">
+            <div class="progress-text">76%<span>(92/120)</span></div>
+            <div class="progress-bar-wrapper">
+              <div class="progress-bar-fill" th:style="'width: 76%'">
+                <div class="bar-end"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--수업진행률-->
+        <div class="subject-Attendance">
+          <h2>출석률</h2>
+          <div class="progress-card">
+            <div class="progress-text">76%<span>(92/120)</span></div>
+            <div class="progress-bar-wrapper">
+              <div class="progress-bar-fill" th:style="'width: 76%'">
+                <div class="bar-end"></div>
+              </div>
+            </div>
+            <div class="Attendance-container">
+              <div class="Attendance-type">
+                출석<br />
+                <div class="type-data">00</div>
+              </div>
+              <div class="Attendance-type">
+                지각<br />
+                <div class="type-data">00</div>
+              </div>
+              <div class="Attendance-type">
+                조퇴<br />
+                <div class="type-data">00</div>
+              </div>
+              <div class="Attendance-type">
+                외출<br />
+                <div class="type-data">00</div>
+              </div>
+              <div class="Attendance-type">
+                결석<br />
+                <div class="type-data">00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 출석률 -->
+        <div class="subject-point">
+          <h2>시험 점수</h2>
+          <div class="subject-card">
+            <div class="subject-data-title">
+              <span class="top-left">과목</span>
+              <span class="top-center">점수</span>
+              <span class="top-right">등급</span>
+            </div>
+            <div class="subject-mid">
+              <span class="title-left">중간평가</span>
+              <span class="title-center">92/100</span>
+              <span class="title-right">A</span>
+            </div>
+            <div class="subject-end">
+              <span class="title-left">기말평가</span>
+              <span class="title-center">32/100</span>
+              <span class="title-right">E</span>
+            </div>
+          </div>
+        </div>
+        <!--시험점수-->
+      </div>
+    </div>
   </body>
 </html>

@@ -1,0 +1,191 @@
+.main-studentdetail-section {
+  width: 1400px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+
+.main-studentdetail-section h1 {
+  padding: 40px 0px;
+  font-size: 48px;
+}
+
+.img-Information-container {
+  display: flex;
+  justify-content: center; /* 균등 배치 */
+  gap: 52px; /* 요소 간 간격 */
+  margin-bottom: 20px;
+}
+
+.student-img-card {
+  width: 674px;
+  height: 400px;
+  border-radius: 15px;
+  background-color: #c0c0c0;
+  margin: 20px 0px;
+}
+
+.Information-card {
+  width: 674px;
+  height: 400px;
+  border-radius: 15px;
+  font-size: 32px;
+  background-color: white;
+  box-shadow: 0px 8px 16px #b286ff40;
+  padding: 30px 60px;
+  color: #c0c0c0;
+  line-height: 150%;
+  margin: 20px 0px;
+}
+
+.Information-card h3 {
+  font-size: 40px;
+  color: #b286ff;
+  margin-bottom: 30px;
+  margin-left: -30px;
+}
+
+.subject-Progress h2 {
+  font-size: 28px;
+  font-weight: 700;
+  padding: 20px 0px;
+}
+
+.progress-card {
+  padding: 30px 50px;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0px 8px 16px #b286ff40;
+}
+
+.progress-text {
+  color: #b286ff;
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.progress-text span {
+  color: #b286ff;
+  font-size: 20px;
+}
+
+.progress-bar-wrapper {
+  background: #e4e0ed;
+  height: 6px;
+  border-radius: 3px;
+  margin: 40px 0px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #b286ff;
+  transition: width 0.5s;
+}
+
+.bar-end {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  background-color: #b286ff;
+  margin-left: auto;
+  transform: translate(6px, -5px);
+}
+
+.subject-Attendance h2 {
+  font-size: 28px;
+  font-weight: 700;
+  padding: 20px 0px;
+}
+
+.Attendance-type {
+  font-size: 24px;
+  text-align: center;
+  margin: 0px 20px;
+  width: auto;
+  height: auto;
+}
+
+.type-data {
+  margin-top: 20px;
+  background-color: #b286ff;
+  border-radius: 50px;
+  font-size: 24px;
+  color: white;
+  padding: 10px;
+  width: 65px;
+  height: 65px;
+  text-align: center;
+}
+
+.Attendance-container {
+  display: flex;
+  justify-content: center; /* 균등 배치 */
+  gap: 10px; /* 요소 간 간격 */
+  margin-top: 20px;
+}
+
+.subject-point h2 {
+  font-size: 32px;
+  font-weight: 700;
+  padding: 20px 0px;
+}
+
+.subject-card {
+  padding: 30px 50px;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0px 8px 16px #b286ff40;
+}
+
+.subject-data-title {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 20px;
+}
+
+.top-left {
+  text-align: left;
+  flex: 1;
+}
+
+.top-center {
+  text-align: center;
+  flex: 1;
+}
+
+.top-right {
+  text-align: right;
+  flex: 1;
+}
+
+.subject-mid,
+.subject-end {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 20px;
+}
+
+.title-left {
+  text-align: left;
+  color: #666666;
+  flex: 1;
+}
+
+.title-center {
+  text-align: center;
+  color: #666666;
+  flex: 1;
+}
+
+.title-right {
+  text-align: right;
+  color: #666666;
+  flex: 1;
+}

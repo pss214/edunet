@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>강사정보페이지</title>
+    <link th:href="@{/css/teacher_detail.css}" rel="stylesheet" />
+    <link th:href="@{/css/student_detail.css}" rel="stylesheet" />
+  </head>
+  <body>
+    <div layout:fragment="content" xmlns:th="http://www.thymeleaf.org">
+      <div class="main-teacherdetail-section">
+        <h1>Next js 프론트엔드 교육 과정 N기</h1>
+        <div class="subject-Progress">
+          <h2>수업 진행률</h2>
+          <div class="progress-card">
+            <div class="progress-text">76%<span>(92/120)</span></div>
+            <div class="progress-bar-wrapper">
+              <div class="progress-bar-fill" th:style="'width: 76%'">
+                <div class="bar-end"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--수업진행률-->
+        <div class="subject-Attendance">
+          <h2>출석률</h2>
+          <div class="progress-card">
+            <div class="progress-text">76%<span>(92/120)</span></div>
+            <div class="progress-bar-wrapper">
+              <div class="progress-bar-fill" th:style="'width: 76%'">
+                <div class="bar-end"></div>
+              </div>
+            </div>
+            <div class="Attendance-container">
+              <div class="Attendance-type">
+                출석<br />
+                <div class="type-data">00</div>
+              </div>
+              <div class="Attendance-type">
+                지각<br />
+                <div class="type-data">00</div>
+              </div>
+              <div class="Attendance-type">
+                조퇴<br />
+                <div class="type-data">00</div>
+              </div>
+              <div class="Attendance-type">
+                외출<br />
+                <div class="type-data">00</div>
+              </div>
+              <div class="Attendance-type">
+                결석<br />
+                <div class="type-data">00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 출석률 -->
+        <div class="class-consultation">
+          <div class="class-journal">
+            <h1>수업 일지</h1>
+            <div class="class-card">
+              <div class="subject-data-title">
+                <span class="top-left">일자</span>
+                <span class="top-center">진행 상태</span>
+              </div>
+              <div class="subject-mid">
+                <span class="title-left">1일차</span>
+                <span class="title-center">입력중</span>
+              </div>
+              <div class="subject-end">
+                <span class="title-left">2일차</span>
+                <span class="title-center">미제출</span>
+              </div>
+            </div>
+            <!-- 수업일지 카드 -->
+          </div>
+          <!-- 수업일지 -->
+          <div class="consultation-journal">
+            <h1>상담 일지</h1>
+            <div class="consultation-card">
+              <div class="subject-data-title">
+                <span class="top-left">상담일</span>
+                <span class="top-center">상담자 성명</span>
+                <span class="top-right">진행 상태</span>
+              </div>
+              <div class="subject-mid">
+                <span class="title-left">6월05일</span>
+                <span class="title-center">김철수</span>
+                <span class="title-right">입력중</span>
+              </div>
+              <div class="subject-end">
+                <span class="title-left">6월11일</span>
+                <span class="title-center">홍길동</span>
+                <span class="title-right">미제출</span>
+              </div>
+            </div>
+            <!-- 상담일지 카드 -->
+          </div>
+          <!-- 상담일지 -->
+        </div>
+        <!-- 수업일지, 상담일지 -->
+        <div class="Attendance-book">
+          <h1>출석부</h1>
+          <div class="Attendance-book-card">
+            <section class="attendance-section">
+              <!-- 테이블 헤더 -->
+              <ul class="attendance-header">
+                <li class="col name">학생 이름</li>
+                <li class="col phone">전화번호</li>
+                <li class="col email">이메일</li>
+                <li class="col action">비고</li>
+              </ul>
+
+              <!-- 학생 리스트 항목 -->
+              <ul class="attendance-list">
+                <li class="attendance-item">
+                  <span class="col name">홍길동</span>
+                  <span class="col phone">010-0000-0000</span>
+                  <span class="col email">example@gmail.com</span>
+                  <span class="col action"><a href="#">자세히보기</a></span>
+                </li>
+                <li class="attendance-item">
+                  <span class="col name">김철수</span>
+                  <span class="col phone">010-0000-0000</span>
+                  <span class="col email">example@gmail.com</span>
+                  <span class="col action"><a href="#">자세히보기</a></span>
+                </li>
+                <!-- 더 추가 가능 -->
+              </ul>
+            </section>
+          </div>
+        </div>
+        <!-- 출석부 -->
+      </div>
+    </div>
+  </body>
+</html>
