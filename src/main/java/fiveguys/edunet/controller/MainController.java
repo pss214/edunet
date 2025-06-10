@@ -140,7 +140,7 @@ public class MainController {
     @GetMapping("/create-subject")
     public String getcreateSubject(HttpServletRequest request,Model model) {
         return "createSubjectPage";
-
+    }
     @GetMapping("/teacher")
     public String getteacher(HttpServletRequest request, Model model) {
         return "teacherdetail";
