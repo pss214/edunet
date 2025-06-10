@@ -34,8 +34,9 @@ public class Student extends BaseTime implements UserDetails {
     private String email;
     private String phone;
     @ManyToOne
-    @JoinColumn(name = "subject_id")
+    @JoinColumn(name = "subject_id", nullable = true)
     private Subject subject;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));

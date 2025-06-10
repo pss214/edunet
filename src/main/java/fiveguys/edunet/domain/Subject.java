@@ -36,7 +36,7 @@ public class Subject {
     @Column(columnDefinition = "LONGTEXT")
     private String detail;
     @OneToOne
-    @JoinColumn(name= "teacher_id")
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
     private String subjectname;
     private int attend;

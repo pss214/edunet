@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+  layout:decorate="~{layout}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/createSubjectPage.css}" />
+    <script th:src="@{/js/createSubjectPage.js}" defer></script>
+    <title>수업 개설</title>
+  </head>
+  <body>
+    <div layout:fragment="content" xmlns:th="http://www.thymeleaf.org">
+      <h1>수업 개설하기</h1>
+      <div class="container">
+        <form action="" method="post">
+          <div class="wrap">
+            <label>과목명</label>
+            <input type="text" name="" id="subject-name" />
+          </div>
+          <div class="wrap">
+            <label>수깅인원</label>
+            <input
+              type="number"
+              min="0"
+              max="20"
+              placeholder="최대 20명"
+              id="attend"
+            />
+          </div>
+          <div class="wrap">
+            <label>모집 분야</label>
+            <div class="radio">
+              <label>
+                <input type="radio" name="theme" value="front" />
+                프론트엔드
+              </label>
+              <label>
+                <input type="radio" name="theme" value="back" />
+                백엔드
+              </label>
+            </div>
+          </div>
+          <div class="set">
+            <div class="wrap">
+              <label>수업 시작시간</label>
+              <input type="time" class="start-time" />
+            </div>
+            <div class="wrap">
+              <label>수업 종료시간</label>
+              <input type="time" class="end-time" />
+            </div>
+          </div>
+          <div class="set">
+            <div class="wrap">
+              <label>수업 시작일</label>
+              <input type="date" class="start-date" />
+            </div>
+            <div class="wrap">
+              <label>수업 종료일</label>
+              <input type="date" class="end-date" />
+            </div>
+          </div>
+          <div class="wrap">
+            <label>수업료</label>
+            <input
+              type="text"
+              placeholder="',' 없이 숫자로만 작성 ex) 500,000원 -> 500000"
+              id="price"
+            />
+          </div>
+          <div class="wrap">
+            <label>모집 마감일</label>
+            <input type="date" id="dead-day" />
+          </div>
+          <div class="wrap">
+            <label>수업내용</label>
+            <textarea id="detail"></textarea>
+          </div>
+          <div class="set-image">
+            <label>
+              <img src="" alt="썸네일 미리보기" style="display: none" />
+              <span>썸네일 업로드(16/9)</span>
+              <input type="file" accept="image/*" hidden />
+            </label>
+            <label>
+              <img
+                src=""
+                alt="커리큘럼 이미지 미리보기"
+                style="display: none"
+              />
+              <span>첨부 자료 업로드(9/16 권장)</span>
+              <input type="file" accept="image/*" hidden />
+            </label>
+          </div>
+          <button type="submit">개설하기</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
