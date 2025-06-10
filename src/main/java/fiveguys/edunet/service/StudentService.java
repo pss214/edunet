@@ -12,9 +12,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import fiveguys.edunet.domain.Student;
+import fiveguys.edunet.domain.Subject;
 import fiveguys.edunet.form.CreateForm;
 import fiveguys.edunet.form.LoginForm;
 import fiveguys.edunet.repository.StudentRepository;
+import fiveguys.edunet.repository.SubjectRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service

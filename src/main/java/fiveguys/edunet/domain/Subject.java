@@ -44,8 +44,8 @@ public class Subject {
     private LocalTime endTime;
     private int price;
     private LocalDate deadDay;
-    private LocalDate endDay;
     private LocalDate startDay;
+    private LocalDate endDay;
     private String thumbnail;
     private String poster;
     private String theme;

@@ -13,16 +13,24 @@
   <body>
     <div layout:fragment="content" xmlns:th="http://www.thymeleaf.org">
       <div class="main-studentdetail-section">
-        <h1>Next js 프론트엔드 교육 과정 N기</h1>
+        <h1 th:text="${subject.subjectname}"></h1>
         <div class="img-Information-container">
-          <div class="student-img-card"></div>
-          <div class="Information-card">
-            <h3>소개</h3>
-            ● 훈련 회차: O회차<br />
-            ● 훈련 기관: 글로벌아카데미<br />
-            ● 기관 위치: 경기도 화성시<br />
-            ● 전화번호: 010-1234-5678<br />
-            ● 훈련 기간: 2024.12.26~2025.06.30
+          <div class="img-Information-container">
+            <div class="student-img-card">
+              <img th:src="${subject.thumbnail}" alt="수업 썸네일" />
+            </div>
+            <div class="Information-card">
+              <h3>강좌 정보</h3>
+              <p
+                th:text="'● 교육기간: ' + ${subject.startDay} + ' ~ ' + ${subject.endDay}"
+              ></p>
+              <p
+                th:text="'● 교육일정: ' + ${subject.startTime} + ' ~ ' + ${subject.endTime}"
+              ></p>
+              <p th:text="'● 모집인원: ' + ${subject.attend} + '명'"></p>
+              <p th:text="'● 모집마감: ' + ${subject.endDay}"></p>
+              <p th:text="'● 수강료: ' + ${subject.price} + '원'"></p>
+            </div>
           </div>
         </div>
         <div class="subject-Progress">
@@ -49,7 +57,7 @@
             <div class="Attendance-container">
               <div class="Attendance-type">
                 출석<br />
-                <div class="type-data">00</div>
+                <div class="type-data">92</div>
               </div>
               <div class="Attendance-type">
                 지각<br />

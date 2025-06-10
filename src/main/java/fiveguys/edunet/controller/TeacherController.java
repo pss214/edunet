@@ -65,7 +65,7 @@ public class TeacherController {
             subjectService.saveSubject(form, user.getUsername());
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "업로드 실패 : " + e.getMessage());
-            return "redirect:/main";
+            return "redirect:/create-subject";
         }
 
         return "redirect:/main";
