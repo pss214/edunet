@@ -9,26 +9,25 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.mail.javamail.JavaMailSender;
-
 import fiveguys.edunet.domain.Student;
 
-import fiveguys.edunet.domain.Subject;
 import fiveguys.edunet.form.CreateForm;
 import fiveguys.edunet.form.LoginForm;
-
+import fiveguys.edunet.form.PasswordFindForm;
+import fiveguys.edunet.form.PasswordNewForm;
 import fiveguys.edunet.repository.StudentRepository;
-import fiveguys.edunet.repository.SubjectRepository;
-import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class StudentService implements UserDetailsService {
+
+    private final BCryptPasswordEncoder passwordEncoder;
     private final StudentRepository sr;
     private final PasswordEncoder encoder;
 
@@ -40,7 +39,7 @@ public class StudentService implements UserDetailsService {
         if (!studentCreateForm.getPassword().equals(studentCreateForm.getPasswordck())) {
             throw new IllegalArgumentException("비밀번호가 다름니다 다시 입력해주세요!");
         }
-        if (!Pattern.matches(regex,studentCreateForm.getPhone())) {
+        if (!Pattern.matches(regex, studentCreateForm.getPhone())) {
             throw new IllegalArgumentException("연락처 형식이 잘못되었습니다 다시 입력해주세요!");
         }
         sr.save(Student.builder()
@@ -85,9 +84,24 @@ public class StudentService implements UserDetailsService {
         return "회원님의 아이디:" + s.getUsername();
     }
 
-    private MimeMessage simpleMessage(String string, String string2, String email) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'simpleMessage'");
+    public String findPassword(PasswordFindForm form) {
+        if (sr.existsByUsername(form.getUsername())) {
+            Student student = sr.findByUsername(form.getUsername()).get();
+            if (student.getEmail().equals(form.getEmail())) {
+                return student.getUsername();
+            }
+        }
+        throw new UsernameNotFoundException("회원을 찾을 수가 없습니다");
     }
 
+    @Transactional
+    public void newPassword(PasswordNewForm form, String username) {
+        Student student = sr.findByUsername(username).get();
+        if (form.getPassword().equals(form.getPasswordck())) {
+            student.setPassword(passwordEncoder.encode(form.getPassword()));
+            sr.save(student);
+            return;
+        }
+        throw new MatchException("비밀번호가 맞지 않습니다 다시 입력하세요", null);
+    }
 }

@@ -21,12 +21,15 @@ import fiveguys.edunet.form.CreateForm;
 import fiveguys.edunet.form.CreateSubject;
 import fiveguys.edunet.form.Emailform;
 import fiveguys.edunet.form.LoginForm;
+import fiveguys.edunet.form.PasswordFindForm;
+import fiveguys.edunet.form.PasswordNewForm;
 import fiveguys.edunet.service.StudentService;
 import fiveguys.edunet.service.SubjectService;
 import fiveguys.edunet.service.TeacherService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequestMapping("/")
@@ -93,9 +96,40 @@ public class MainController {
     }
 
     @GetMapping("/password")
-    public String getpassword(Model model) {
-        model.addAttribute("signup", new CreateForm());
+    public String getpassword(Model model, RedirectAttributes redirectAttributes) {
+        model.addAttribute("passwordfind", new PasswordFindForm());
         return "passwordPage";
+    }
+
+    @PostMapping("/password")
+    public String postPassword(Model model, @ModelAttribute("passwordfind") PasswordFindForm form,
+            RedirectAttributes redirectAttributes) {
+        try {
+            String username = studentService.findPassword(form);
+            return "redirect:/password-new/" + username;
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+            return "redirect:/password";
+        }
+    }
+
+    @GetMapping("/password-new/{username}")
+    public String getpasswordNew(Model model, @PathVariable String username,
+            RedirectAttributes redirectAttributes) {
+        model.addAttribute("passwordnew", new PasswordNewForm());
+        return "passwordNewPage";
+    }
+
+    @PostMapping("/password-new/{username}")
+    public String postpasswordNew(Model model, @ModelAttribute("passwordnew") PasswordNewForm form,
+            @PathVariable String username, RedirectAttributes redirectAttributes) {
+        try {
+            studentService.newPassword(form, username);
+            return "redirect:/login";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+            return "redirect:/password-new/" + username;
+        }
     }
 
     @GetMapping("/main")
@@ -130,6 +164,7 @@ public class MainController {
         model.addAttribute("object", new CreateSubject());
         return "createSubjectPage";
     }
+
     @GetMapping("/teacher-detail")
     public String getteacher(HttpServletRequest request, Model model, @AuthenticationPrincipal User user) {
         try {
