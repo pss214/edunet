@@ -48,18 +48,8 @@ public class Student extends BaseTime implements UserDetails {
         this.subject = subject;
     }
 
-    public class PasswordResetToken {
-
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
-
-        private String tokenHash; // 토큰은 해시값만 저장
-        private LocalDateTime expiresAt;
-
-        @ManyToOne(fetch = FetchType.LAZY)
-        private Student student;
-
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }
