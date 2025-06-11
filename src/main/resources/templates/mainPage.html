@@ -31,12 +31,12 @@
         <div class="section">
           <h2>EDUNET 부트캠프에서는?</h2>
           <div class="about-bootcamp">
-            카카오에서 좋은 개발자를 양성하고, 지속 가능한 개발 생태계를 만들기
-            위해 카카오테크 부트캠프를 새롭게 시작합니다. 카카오 기술을 베이스로
-            한 실무 중심의 교육, 좋은 동료와 함께하는 깊이 있는 협업, 성장에만
-            집중할 수 있는 오프라인 공간을, 개발자를 꿈꾸는 모든 예비 개발자에게
-            제공합니다. 성장하고 싶은 예비 개발자가 모이는 곳, 카카오테크
-            부트캠프에서 당신의 꿈을 펼쳐보세요.
+            에듀넷에서 좋은 개발자를 양성하고, 지속 가능한 개발 생태계를 만들기
+            위해 에듀넷 부트캠프를 새롭게 시작합니다. 실무 중심의 교육, 좋은
+            동료와 함께하는 깊이 있는 협업, 성장에만 집중할 수 있는 오프라인
+            공간을, 개발자를 꿈꾸는 모든 예비 개발자에게 제공합니다. 성장하고
+            싶은 예비 개발자가 모이는 곳, 에듀넷 부트캠프에서 당신의 꿈을
+            펼쳐보세요.
           </div>
           <div class="card-container">
             <div>
@@ -76,13 +76,13 @@
           <div class="section-header">
             <h4>웹 개발 부트캠프</h4>
             <div class="arrow-buttons">
-              <button onclick="frontendscroll(-1)">&#10094;</button>
-              <button onclick="frontendscroll(1)">&#10095;</button>
+              <button onclick="devWebScroll(-1)">&#10094;</button>
+              <button onclick="devWebScroll(1)">&#10095;</button>
             </div>
           </div>
         </div>
         <div class="bootcamp-container-wrap">
-          <div class="bootcamp-container" id="frontend-scroll">
+          <div class="bootcamp-container" id="dev-web-scroll">
             <div class="bootcamp-item" th:each="subject : ${subjects}">
               <a th:href="'/subject/'+${subject.id}">
                 <div class="bootcamp-card">
@@ -102,16 +102,8 @@
       <!-- 메인세션 -->
 
       <script>
-        function frontendscroll(direction) {
-          const container = document.getElementById("frontend-scroll");
-          const cardWidth = 280;
-          container.scrollBy({
-            left: direction * cardWidth,
-            behavior: "smooth",
-          });
-        }
-        function backendscroll(direction) {
-          const container = document.getElementById("backend-scroll");
+        function devWebScroll(direction) {
+          const container = document.getElementById("dev-web-scroll");
           const cardWidth = 280;
           container.scrollBy({
             left: direction * cardWidth,
