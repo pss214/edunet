@@ -31,8 +31,6 @@ public class StudentService implements UserDetailsService {
     private final StudentRepository sr;
     private final PasswordEncoder encoder;
 
-    private final JavaMailSender mailSender;
-
     public void signup(CreateForm studentCreateForm) {
         if (sr.existsByUsername(studentCreateForm.getUsername())) {
             throw new UsernameNotFoundException("아이디가 중복입니다 다시 입력해주세요!");
@@ -78,10 +76,8 @@ public class StudentService implements UserDetailsService {
         Student s = sr.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("일치하는 회원이 없습니다"));
 
-        mailSender.send(simpleMessage("[Edunet] 요청하신 아이디입니다", "회원님의 아이디: " + s.getUsername(), email));
-
         // 화면에는 결과 노출 X (정보유출 방지)
-        return "입력하신 이메일로 아이디를 발송했습니다.";
+        return "회원님의 아이디:" + s.getUsername();
     }
 
     private MimeMessage simpleMessage(String string, String string2, String email) {

@@ -1,5 +1,8 @@
 package fiveguys.edunet.form;
 
-public record Emailform(String email) {
+import lombok.Data;
 
+@Data
+public class Emailform {
+    private String email;
 }

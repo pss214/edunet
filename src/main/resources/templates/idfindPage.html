@@ -1,59 +1,54 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/idfind.css}" />
-    <link rel="stylesheet" th:href="@{/css/default.css}" />
-    <script th:src="@{/js/idfind.js}" defer></script>
-    <title>ID찾기</title>
-  </head>
-  <body>
-    <main>
-      <section class="textArea">
-        <div class="changeUser">
-          <div>
-            <input type="checkbox" id="toggle" hidden />
-            <label for="toggle" class="toggleSwitch">
-              <span class="toggleButton"><p>S</p></span>
-            </label>
-          </div>
-          <p>선생님 이신가요?</p>
-        </div>
 
-        <div class="idfindForm">
-          <div class="wrap">
-            <h2>학생 ID 찾기</h2>
-            <p th:if="${error}" th:text="${error}" style="color: red"></p>
-            <form action="/idfind" method="post" th:object="${idfind}">
-              <input type="email" name="email" placeholder="이메일" required />
-              <input
-                type="text"
-                name="type"
-                value="student"
-                style="display: none"
-                id="userType"
-                required
-              />
-              <button type="submit">아이디 찾기</button>
-              <div>
-                <a th:href="@{/password}">비밀번호 찾기</a>
-                |<a th:href="@{/signup}">회원가입</a>|
-                <a th:href="@{/login}">로그인</a>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" th:href="@{/css/idfind.css}" />
+  <link rel="stylesheet" th:href="@{/css/default.css}" />
+  <script th:src="@{/js/idfind.js}" defer></script>
+  <title>ID찾기</title>
+</head>
 
-      <section class="imgArea">
-        <img th:src="@{image/student.png}" alt="학생 회원가입 이미지" />
-        <img
-          th:src="@{image/teacher.png}"
-          alt="선생님 회원가입 이미지"
-          class="hidden"
-        />
-      </section>
-    </main>
-  </body>
+<body>
+  <main>
+    <section class="textArea">
+      <div class="changeUser">
+        <div>
+          <input type="checkbox" id="toggle" hidden />
+          <label for="toggle" class="toggleSwitch">
+            <span class="toggleButton">
+              <p>S</p>
+            </span>
+          </label>
+        </div>
+        <p>선생님 이신가요?</p>
+      </div>
+
+      <div class="idfindForm">
+        <div class="wrap">
+          <h2>학생 ID 찾기</h2>
+          <p th:if="${error}" th:text="${error}" style="color: red"></p>
+          <form action="/idfind" method="post" th:object="${idfind}">
+            <input type="email" name="email" placeholder="이메일" required />
+            <input type="text" name="type" value="student" style="display: none" id="userType" required />
+            <p th:if="${username}" th:text="${username}" style="color: blue"></p>
+            <button type="submit">아이디 찾기</button>
+            <div>
+              <a th:href="@{/password}">비밀번호 찾기</a>
+              |<a th:href="@{/signup}">회원가입</a>|
+              <a th:href="@{/login}">로그인</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="imgArea">
+      <img th:src="@{image/student.png}" alt="학생 회원가입 이미지" />
+      <img th:src="@{image/teacher.png}" alt="선생님 회원가입 이미지" class="hidden" />
+    </section>
+  </main>
+</body>
+
 </html>
