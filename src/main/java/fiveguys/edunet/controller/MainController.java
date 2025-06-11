@@ -108,7 +108,7 @@ public class MainController {
         return "subjectPage";
     }
 
-    @GetMapping("/student")
+    @GetMapping("/student-detail")
     public String getstudent(HttpServletRequest request, Model model, @AuthenticationPrincipal User user) {
         try {
             model.addAttribute("subject", subjectService.myClass(user.getUsername()));
@@ -123,7 +123,7 @@ public class MainController {
         model.addAttribute("object", new CreateSubject());
         return "createSubjectPage";
     }
-    @GetMapping("/teacher")
+    @GetMapping("/teacher-detail")
     public String getteacher(HttpServletRequest request, Model model, @AuthenticationPrincipal User user) {
         try{
             Subject subject = subjectService.teacherClass(user.getUsername());
