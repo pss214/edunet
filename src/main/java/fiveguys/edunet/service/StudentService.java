@@ -11,17 +11,23 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import fiveguys.edunet.domain.Student;
+
 import fiveguys.edunet.domain.Subject;
 import fiveguys.edunet.form.CreateForm;
 import fiveguys.edunet.form.LoginForm;
+
 import fiveguys.edunet.repository.StudentRepository;
 import fiveguys.edunet.repository.SubjectRepository;
+import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class StudentService implements UserDetailsService {
     private final StudentRepository sr;
     private final PasswordEncoder encoder;
@@ -46,6 +52,7 @@ public class StudentService implements UserDetailsService {
                 .subject(null)
                 .build());
     }
+
     public boolean signin(LoginForm form) {
         if (sr.existsByUsername(form.getUsername())) {
             Student student = sr.findByUsername(form.getUsername()).get();
@@ -68,4 +75,19 @@ public class StudentService implements UserDetailsService {
                 foundUser.getPassword(),
                 List.of(new SimpleGrantedAuthority("ROLE_USER")));
     }
+
+    @Transactional(readOnly = true)
+    public String findUsernameByEmail(String email) {
+        Student s = sr.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("일치하는 회원이 없습니다"));
+
+        // 화면에는 결과 노출 X (정보유출 방지)
+        return "회원님의 아이디:" + s.getUsername();
+    }
+
+    private MimeMessage simpleMessage(String string, String string2, String email) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'simpleMessage'");
+    }
+
 }

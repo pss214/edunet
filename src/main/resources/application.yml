@@ -17,4 +17,12 @@ spring:
             port: 35729
     freemarker:
         cache: false
+    mail:
+        host: smtp.gmail.com
+        port: 587
+        username: your@gmail.com
+        password: app-password      # Gmail은 ‘앱 비밀번호’ 사용
+        properties:
+            mail.smtp.auth: true
+            mail.smtp.starttls.enable: true
         

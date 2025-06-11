@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fiveguys.edunet.domain.Subject;
 import fiveguys.edunet.form.CreateForm;
 import fiveguys.edunet.form.CreateSubject;
+import fiveguys.edunet.form.Emailform;
 import fiveguys.edunet.form.LoginForm;
 import fiveguys.edunet.service.StudentService;
 import fiveguys.edunet.service.SubjectService;
@@ -76,11 +78,18 @@ public class MainController {
         return "redirect:/login";
     }
 
-
     @GetMapping("/idfind")
-    public String getidfind(Model model) {
-        model.addAttribute("signup", new CreateForm());
+    public String getidfind(Model model, RedirectAttributes redirectAttributes) {
+        model.addAttribute("idfind", new Emailform());
         return "idfindPage";
+    }
+
+    @PostMapping("/idfind")
+    public String postidfind(Model model, @ModelAttribute("idfind") Emailform form,
+            RedirectAttributes redirectAttributes) {
+        model.addAttribute("idfind", new Emailform());
+        redirectAttributes.addFlashAttribute("username", studentService.findUsernameByEmail(form.getEmail()));
+        return "redirect:/idfind";
     }
 
     @GetMapping("/password")
@@ -88,8 +97,6 @@ public class MainController {
         model.addAttribute("signup", new CreateForm());
         return "passwordPage";
     }
-
-            
 
     @GetMapping("/main")
     public String getMain(Model model) {
@@ -101,8 +108,8 @@ public class MainController {
     }
 
     @GetMapping("/subject/{id}")
-    public String getSubject(HttpServletRequest request, Model model,@PathVariable Long id) {
-        Subject subject= subjectService.findById(id);
+    public String getSubject(HttpServletRequest request, Model model, @PathVariable Long id) {
+        Subject subject = subjectService.findById(id);
         model.addAttribute("subject", subject);
         model.addAttribute("teacher", subject.getTeacher());
         return "subjectPage";
@@ -117,24 +124,24 @@ public class MainController {
         }
         return "studentdetail";
     }
-    
+
     @GetMapping("/create-subject")
-    public String getcreateSubject(HttpServletRequest request,Model model) {
+    public String getcreateSubject(HttpServletRequest request, Model model) {
         model.addAttribute("object", new CreateSubject());
         return "createSubjectPage";
     }
     @GetMapping("/teacher-detail")
     public String getteacher(HttpServletRequest request, Model model, @AuthenticationPrincipal User user) {
-        try{
+        try {
             Subject subject = subjectService.teacherClass(user.getUsername());
             model.addAttribute("students", subject.getStudents());
             model.addAttribute("subject", subject);
-        }catch(Exception e){
+        } catch (Exception e) {
             model.addAttribute("students", null);
             model.addAttribute("subject", null);
         }
-        
+
         return "teacherdetail";
     }
-    
+
 }
