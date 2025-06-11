@@ -86,7 +86,7 @@
             <div class="bootcamp-item" th:each="subject : ${subjects}">
               <a th:href="'/subject/'+${subject.id}">
                 <div class="bootcamp-card">
-                  <img th:src="@{${subject.thumbnail}}" alt="로그인 일러스트" />
+                  <img th:src="@{${subject.thumbnail}}" alt="강좌 썸네일" />
                   <span class="badge">N기</span>
                 </div>
                 <p class="title" th:text="${subject.subjectname}"></p>
