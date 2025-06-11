@@ -50,6 +50,8 @@
   overflow: hidden;
   margin: 0 auto;
   background-color: #ccc;
+  border-radius: 32px;
+  box-shadow: 0 4px 16px #b286ff40;
   position: relative;
 }
 
