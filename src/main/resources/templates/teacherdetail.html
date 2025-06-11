@@ -11,7 +11,7 @@
     <link th:href="@{/css/teacher_detail.css}" rel="stylesheet" />
     <link th:href="@{/css/student_detail.css}" rel="stylesheet" />
   </head>
-  <body layout:fragment="content" xmlns:th="http://www.thymeleaf.org">
+  <body layout:fragment="content">
     <div>
       <div th:if="${subject}" class="main-teacherdetail-section">
         <h1 th:text="${subject.subjectname}"></h1>
