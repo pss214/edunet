@@ -2,6 +2,7 @@ package fiveguys.edunet.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -32,11 +33,15 @@ public class StudentService implements UserDetailsService {
     private final PasswordEncoder encoder;
 
     public void signup(CreateForm studentCreateForm) {
+        String regex = "^01[016789]-?\\d{3,4}-?\\d{4}$";
         if (sr.existsByUsername(studentCreateForm.getUsername())) {
             throw new UsernameNotFoundException("아이디가 중복입니다 다시 입력해주세요!");
         }
         if (!studentCreateForm.getPassword().equals(studentCreateForm.getPasswordck())) {
             throw new IllegalArgumentException("비밀번호가 다름니다 다시 입력해주세요!");
+        }
+        if (!Pattern.matches(regex,studentCreateForm.getPhone())) {
+            throw new IllegalArgumentException("연락처 형식이 잘못되었습니다 다시 입력해주세요!");
         }
         sr.save(Student.builder()
                 .username(studentCreateForm.getUsername())

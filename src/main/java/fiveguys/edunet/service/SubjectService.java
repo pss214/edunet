@@ -3,11 +3,8 @@ package fiveguys.edunet.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 import org.openqa.selenium.NotFoundException;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -27,10 +24,9 @@ public class SubjectService {
     private final StudentRepository studentRepository;
     private final SubjectRepository subjectRepository;
     private final TeacherRepository teacherRepository;
-    private final ResourceLoader resourceLoader;
 
-    @Transactional
     public void saveSubject(CreateSubject form, String username) throws IOException {
+        // String path = "/Users/pss/Desktop/edunet/src/main/resources/static/image/";
         String path = "C:\\새 폴더\\edunet\\src\\main\\resources\\static\\image\\";
         String thumbnailName = form.getThumbnail().getOriginalFilename();
         String posterName = form.getPoster().getOriginalFilename();
@@ -57,8 +53,7 @@ public class SubjectService {
                     .poster("/image/" + form.getSubjectname() + "_poster." + extentionName2)
                     .theme(form.getTheme())
                     .build();
-            teacher.setSubject(subject);
-            teacherRepository.save(teacher);
+            subjectRepository.save(subject);
         } else {
             throw new UsernameNotFoundException("강사를 찾을 수 없습니다.");
         }
@@ -94,8 +89,11 @@ public class SubjectService {
         if(student.getSubject()==null) throw new NotFoundException();
         return student.getSubject();
     }
+    @Transactional
     public Subject teacherClass(String teacherId) throws Exception{
         Teacher teacher = teacherRepository.findByUsername(teacherId).get();
-        return teacher.getSubject();
+        Subject subject = subjectRepository.findByTeacher(teacher);
+        subject.getStudents().isEmpty();
+        return subject;
     }
 }

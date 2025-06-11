@@ -12,6 +12,6 @@ submitButton.addEventListener("click", () => {
     }),
   }).then((res) => {
     if (!res) return alert("수강 신청을 실패하였습니다. 다시 신청해주세요");
-    return window.location.replace("/student");
+    return window.location.replace("/student-detail");
   });
 });

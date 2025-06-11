@@ -1,8 +1,9 @@
 .my_gradient_1 {
   background-image: linear-gradient(to bottom, #b286ff, #fcfbff);
-  min-height: 100vh; /* 전체 화면 높이 확보 */
+  min-height: calc(100vh - 80px); /* 전체 화면 높이 확보 */
   width: 100%;
   float: left;
+  margin-bottom: 40px;
 }
 
 .navbar {
@@ -49,12 +50,16 @@
   overflow: hidden;
   margin: 0 auto;
   background-color: #ccc;
+  border-radius: 32px;
+  box-shadow: 0 4px 16px #b286ff40;
   position: relative;
+  border-radius: 10px;
 }
 
 .video-box img {
   width: 100%;
   height: 100%;
+  border-radius: 10px;
   object-fit: cover; /* ✅ div 비율에 꽉 맞춤 */
   display: block;
 }
@@ -81,10 +86,14 @@
 .about-bootcamp {
   width: 100%;
   border-radius: 10px;
-  background-color: #eeeeee;
+  background-color: #f2f2f2;
   font-size: 18px;
+  font-weight: 600;
+  color: #666;
+  line-height: 30px;
+  word-break: keep-all;
   margin-top: 20px;
-  padding: 30px;
+  padding: 24px;
 }
 
 .section h2 {
@@ -128,13 +137,17 @@
 .card {
   width: 312px;
   height: 180px;
-  background-color: #c9c9c9;
+  background-color: white;
   border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card img {
-  width: 100%;
   height: 100%;
+  width: auto;
   object-fit: cover; /* ✅ div 비율에 꽉 맞춤 */
   display: block;
 }
