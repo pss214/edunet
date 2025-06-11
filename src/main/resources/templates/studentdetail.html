@@ -10,8 +10,8 @@
     <title>학생정보페이지</title>
     <link th:href="@{/css/student_detail.css}" rel="stylesheet" />
   </head>
-  <body>
-    <div layout:fragment="content" xmlns:th="http://www.thymeleaf.org">
+  <body layout:fragment="content" xmlns:th="http://www.thymeleaf.org">
+    <div th:if="${subject}">
       <div class="main-studentdetail-section">
         <h1 th:text="${subject.subjectname}"></h1>
         <div class="img-Information-container">
@@ -102,5 +102,18 @@
         <!--시험점수-->
       </div>
     </div>
+    <div
+      id="error-message"
+      th:if="${error}"
+      th:text="${error}"
+      style="display: none"
+    ></div>
+    <script defer>
+      const errorElement = document.getElementById("error-message");
+      if (errorElement) {
+        alert(errorElement.textContent);
+        window.location.replace("/main");
+      }
+    </script>
   </body>
 </html>

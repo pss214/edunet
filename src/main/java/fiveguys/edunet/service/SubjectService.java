@@ -18,6 +18,7 @@ import fiveguys.edunet.form.CreateSubject;
 import fiveguys.edunet.repository.StudentRepository;
 import fiveguys.edunet.repository.SubjectRepository;
 import fiveguys.edunet.repository.TeacherRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -28,6 +29,7 @@ public class SubjectService {
     private final TeacherRepository teacherRepository;
     private final ResourceLoader resourceLoader;
 
+    @Transactional
     public void saveSubject(CreateSubject form, String username) throws IOException {
         String path = "C:\\새 폴더\\edunet\\src\\main\\resources\\static\\image\\";
         String thumbnailName = form.getThumbnail().getOriginalFilename();
@@ -40,7 +42,7 @@ public class SubjectService {
         form.getPoster().transferTo(new File(path + form.getSubjectname() + "_poster." + extentionName2));
         if (teacherRepository.existsByUsername(username)) {
             Teacher teacher = teacherRepository.findByUsername(username).get();
-            subjectRepository.save(Subject.builder()
+            Subject subject = Subject.builder()
                     .teacher(teacher)
                     .detail(form.getDetail())
                     .subjectname(form.getSubjectname())
@@ -54,7 +56,9 @@ public class SubjectService {
                     .thumbnail("/image/" + form.getSubjectname() + "_thumbnail." + extentionName)
                     .poster("/image/" + form.getSubjectname() + "_poster." + extentionName2)
                     .theme(form.getTheme())
-                    .build());
+                    .build();
+            teacher.setSubject(subject);
+            teacherRepository.save(teacher);
         } else {
             throw new UsernameNotFoundException("강사를 찾을 수 없습니다.");
         }
@@ -85,9 +89,13 @@ public class SubjectService {
         student.setSubject(subject);
         studentRepository.save(student);
     }
-    public Subject myClass(String userId) {
+    public Subject myClass(String userId) throws Exception {
         Student student = studentRepository.findByUsername(userId).get();
-        if(student.getSubject() == null) throw new NotFoundException();
+        if(student.getSubject()==null) throw new NotFoundException();
         return student.getSubject();
+    }
+    public Subject teacherClass(String teacherId) throws Exception{
+        Teacher teacher = teacherRepository.findByUsername(teacherId).get();
+        return teacher.getSubject();
     }
 }

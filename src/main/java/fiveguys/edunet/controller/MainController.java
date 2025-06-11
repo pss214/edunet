@@ -110,7 +110,11 @@ public class MainController {
 
     @GetMapping("/student")
     public String getstudent(HttpServletRequest request, Model model, @AuthenticationPrincipal User user) {
-        model.addAttribute("subject", subjectService.myClass(user.getUsername()));
+        try {
+            model.addAttribute("subject", subjectService.myClass(user.getUsername()));
+        } catch (Exception e) {
+            model.addAttribute("error", "강좌가 없습니다.");
+        }
         return "studentdetail";
     }
     
@@ -120,7 +124,16 @@ public class MainController {
         return "createSubjectPage";
     }
     @GetMapping("/teacher")
-    public String getteacher(HttpServletRequest request, Model model) {
+    public String getteacher(HttpServletRequest request, Model model, @AuthenticationPrincipal User user) {
+        try{
+            Subject subject = subjectService.teacherClass(user.getUsername());
+            model.addAttribute("students", subject.getStudents());
+            model.addAttribute("subject", subject);
+        }catch(Exception e){
+            model.addAttribute("students", null);
+            model.addAttribute("subject", null);
+        }
+        
         return "teacherdetail";
     }
     
