@@ -41,14 +41,31 @@ footer {
   height: 300px;
   background-color: #b286ff;
   color: white;
-  padding: 40px 200px;
+  padding: 56px 158px 56px 184px;
+  margin-top: 40px;
 }
 
 .footer-team > p {
+  font-weight: 500;
+  font-size: 24px;
+  color: white;
+}
+
+.footer-team > span {
+  font-weight: 300;
+  font-size: 20px;
   color: white;
 }
 
 .footer-container {
   display: flex;
-  justify-content: space-between; /* 균등 배치 */
+  justify-content: space-between; /* 좌우 정렬 */
+  align-items: center; /* 세로 가운데 정렬 */
+  margin-top: 20px;
+}
+
+.git-img {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
