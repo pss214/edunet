@@ -1,5 +1,6 @@
 package fiveguys.edunet.domain;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -41,7 +43,23 @@ public class Student extends BaseTime implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
-    public void setSubject(Subject subject){
+
+    public void setSubject(Subject subject) {
         this.subject = subject;
     }
+
+    public class PasswordResetToken {
+
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
+
+        private String tokenHash; // 토큰은 해시값만 저장
+        private LocalDateTime expiresAt;
+
+        @ManyToOne(fetch = FetchType.LAZY)
+        private Student student;
+
+    }
+
 }
