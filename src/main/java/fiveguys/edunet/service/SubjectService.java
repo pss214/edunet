@@ -26,7 +26,7 @@ public class SubjectService {
     private final SubjectRepository subjectRepository;
     private final TeacherRepository teacherRepository;
     private final RpaService rpaService;
-    @Value("subject.path")
+    @Value("${subject.path}")
     private String path;
     public void saveSubject(CreateSubject form, String username) throws IOException {
         String thumbnailName = form.getThumbnail().getOriginalFilename();
@@ -60,7 +60,7 @@ public class SubjectService {
                     .theme(form.getTheme())
                     .build();
             subjectRepository.save(subject);
-            rpaService.Rpa(filepath, form.getDetail());
+            rpaService.rpa(filepath, form.getDetail(),form.getSubjectname());
         } else {
             throw new UsernameNotFoundException("강사를 찾을 수 없습니다.");
         }

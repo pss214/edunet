@@ -24,7 +24,7 @@ public class RpaService {
     @Value("${rpa.pw}")
     private String pw; 
     @Async
-    public void Rpa(String filepath, String content){
+    public  void rpa(String filepath, String content,String subject) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         options.addArguments("--disable-popup-blocking");
@@ -39,8 +39,8 @@ public class RpaService {
             WebElement idInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("loginId--1")));
             WebElement pwInput = driver.findElement(By.id("password--2"));
 
-            typeLikeHuman(idInput, id);
-            typeLikeHuman(pwInput, pw);
+            typeLikeHuman(idInput, "jys880919@hanmail.net");
+            typeLikeHuman(pwInput, "rhddb@06");
 
             WebElement loginButton = driver.findElement(By.className("btn_g"));
             Thread.sleep(500 + (int)(Math.random() * 1000)); // 버튼 클릭 전 딜레이
@@ -60,7 +60,7 @@ public class RpaService {
                     closeButton.click();
                     Thread.sleep(1000);
                 }
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 // 팝업 없으면 무시
             }
 
@@ -96,7 +96,7 @@ public class RpaService {
                     ourStoryOption.click();
                     Thread.sleep(2000);
                 }
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 System.out.println("게시판 선택 중 오류 발생: " + e.getMessage());
             }
 
@@ -117,7 +117,7 @@ public class RpaService {
                 titleInput = driver.findElement(By.cssSelector("#article-title .title__input"));
             }
 
-            titleInput.sendKeys("자동 포스팅 테스트");
+            titleInput.sendKeys("경)"+subject+ "개설~!(축");
             Thread.sleep(2000);
 
             WebElement editorFrame = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("keditorContainer_ifr")));
@@ -162,21 +162,21 @@ public class RpaService {
             }
             Thread.sleep(1000);
 
-        } catch (InterruptedException e) {
-
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             driver.quit();
         }
     }
 
-    private void typeLikeHuman(WebElement element, String text) throws InterruptedException {
+    private static void typeLikeHuman(WebElement element, String text) throws InterruptedException {
         for (char c : text.toCharArray()) {
             element.sendKeys(Character.toString(c));
             Thread.sleep(100 + (int)(Math.random() * 200));
         }
     }
 
-    private boolean clickElementInFrames(WebDriver driver, WebDriverWait wait, By locator) {
+    private static boolean clickElementInFrames(WebDriver driver, WebDriverWait wait, By locator) {
         try {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
             element.click();
@@ -245,5 +245,5 @@ public class RpaService {
         }
         return false;
     }
-}
 
+}
