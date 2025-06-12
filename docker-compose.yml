@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpw
+      MYSQL_DATABASE: edunet
+      MYSQL_USER: edunetuser
+      MYSQL_PASSWORD: edunetpw
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: always
+
+  edunet-app:
+    build: .
+    container_name: edunet-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/edunet
+      SPRING_DATASOURCE_USERNAME: edunetuser
+      SPRING_DATASOURCE_PASSWORD: edunetpw
+    restart: always
+
+volumes:
+  mysql-data:

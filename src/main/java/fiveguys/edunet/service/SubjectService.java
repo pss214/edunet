@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.openqa.selenium.NotFoundException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -24,18 +25,23 @@ public class SubjectService {
     private final StudentRepository studentRepository;
     private final SubjectRepository subjectRepository;
     private final TeacherRepository teacherRepository;
-
+    private final RpaService rpaService;
+    @Value("subject.path")
+    private String path;
     public void saveSubject(CreateSubject form, String username) throws IOException {
-        // String path = "/Users/pss/Desktop/edunet/src/main/resources/static/image/";
-        String path = "C:\\새 폴더\\edunet\\src\\main\\resources\\static\\image\\";
         String thumbnailName = form.getThumbnail().getOriginalFilename();
         String posterName = form.getPoster().getOriginalFilename();
         if (thumbnailName == null || !thumbnailName.contains(".")) {
+            throw new IllegalArgumentException("썸네일 파일명이 잘못되었습니다.");
+        }
+        if (posterName == null || !posterName.contains(".")) {
+            throw new IllegalArgumentException("포스터 파일명이 잘못되었습니다.");
         }
         String extentionName = thumbnailName.substring(thumbnailName.lastIndexOf(".") + 1).toLowerCase();
         String extentionName2 = posterName.substring(posterName.lastIndexOf(".") + 1).toLowerCase();
         form.getThumbnail().transferTo(new File(path + form.getSubjectname() + "_thumbnail." + extentionName));
         form.getPoster().transferTo(new File(path + form.getSubjectname() + "_poster." + extentionName2));
+        String filepath = path+form.getSubjectname()+"_poster."+extentionName2;
         if (teacherRepository.existsByUsername(username)) {
             Teacher teacher = teacherRepository.findByUsername(username).get();
             Subject subject = Subject.builder()
@@ -54,25 +60,14 @@ public class SubjectService {
                     .theme(form.getTheme())
                     .build();
             subjectRepository.save(subject);
+            rpaService.Rpa(filepath, form.getDetail());
         } else {
             throw new UsernameNotFoundException("강사를 찾을 수 없습니다.");
         }
     }
 
-    public boolean isSubjectCodeDuplicate(String subjectname) {
-        return subjectRepository.findBySubjectname(subjectname).isPresent();
-    }
-
     public List<Subject> findAll() {
         return subjectRepository.findAll();
-    }
-
-    // public Optional<Subject> findById(Long id) {
-    //     return subjectRepository.findById(id);
-    // }
-
-    public void deleteById(Long id) {
-        subjectRepository.deleteById(id);
     }
 
     public Subject findById(Long id) {
