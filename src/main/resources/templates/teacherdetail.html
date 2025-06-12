@@ -9,7 +9,6 @@
     <meta charset="UTF-8" />
     <title>강사정보페이지</title>
     <link th:href="@{/css/teacher_detail.css}" rel="stylesheet" />
-    <link th:href="@{/css/student_detail.css}" rel="stylesheet" />
   </head>
   <body layout:fragment="content">
     <div>
@@ -131,7 +130,11 @@
         </div>
         <!-- 출석부 -->
       </div>
-      <a href="/create-subject" th:unless="${subject}">강좌 개설하기</a>
+      <div class="main-teacherdetail-section">
+        <a href="/create-subject" th:unless="${subject}" class="button"
+          >+ 강좌 개설하기</a
+        >
+      </div>
     </div>
   </body>
 </html>
