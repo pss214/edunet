@@ -70,9 +70,11 @@ public class StudentService implements UserDetailsService {
 
         Student foundUser = userOptional.get();
         return new User(
-                foundUser.getUsername(),
-                foundUser.getPassword(),
-                List.of(new SimpleGrantedAuthority("ROLE_USER")));
+            foundUser.getUsername(),
+            foundUser.getPassword(),
+            // 학생 권한 부여
+            List.of(new SimpleGrantedAuthority("ROLE_USER"))
+        );
     }
 
     @Transactional(readOnly = true)

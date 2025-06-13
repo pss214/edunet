@@ -62,6 +62,7 @@ public class TeacherService implements UserDetailsService{
         return new User(
             foundUser.getUsername(),
             foundUser.getPassword(),
+            // 관리자 권한 부여
             List.of(new SimpleGrantedAuthority("ROLE_ADMIN"))
         );
     }
